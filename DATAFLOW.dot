@@ -1,0 +1,121 @@
+digraph HealthCallAgentDataflow {
+    rankdir=LR;
+    bgcolor=white;
+    node [shape=box, style=filled, fontname="Arial", fontsize=11];
+    edge [fontname="Arial", fontsize=10];
+
+    // ============================================================================
+    // LAYER 1: INPUT DATA
+    // ============================================================================
+    subgraph cluster_input {
+        label="INPUT: Failed Call Data\n(JSON)";
+        style=filled;
+        fillcolor="#E8F4F8";
+        
+        INPUT [label="Call Conversation (JSON)\n\nagent: \"Hello, how can I help?\"\ncustomer: \"I want to book appointment\"\nagent: \"I'm sorry, system is down\"\n\n❌ Purpose NOT Achieved", shape=box, fillcolor="#4A90E2"];
+    }
+
+    // ============================================================================
+    // LAYER 2: AGENT 1 - IDENTIFY PURPOSE
+    // ============================================================================
+    subgraph cluster_agent1 {
+        label="AGENT 1: Identify Call Purpose\n(with AI Prompt)";
+        style=filled;
+        fillcolor="#FFF8E8";
+        
+        AGENT1 [label="Agent 1 Analyzes:\n\nPrompt: \"What was the customer\ntrying to achieve?\"\n\n📌 Output 1:\n• Purpose: booking\n• Confidence: high\n• Summary: Customer wanted\n  to schedule appointment", shape=box, fillcolor="#FFD700"];
+    }
+
+    // ============================================================================
+    // LAYER 3: AGENT 2 - ANALYZE FAILURE
+    // ============================================================================
+    subgraph cluster_agent2 {
+        label="AGENT 2: Analyze Why Purpose Failed\n(with AI Prompt)";
+        style=filled;
+        fillcolor="#FFE8F8";
+        
+        AGENT2_PROCESS [label="Agent 2 Receives:\n• Output 1 (Purpose)\n• Full conversation JSON\n\nAnalyzes BOTH:", shape=box, fillcolor="#FF9999"];
+        
+        AGENT2_BUSINESS [label="🏢 BUSINESS/OPERATIONAL\nFailures:\n\n• System downtime\n• Process limitation\n• Long wait times\n• Policy issues\n• Missing information", shape=box, fillcolor="#FFB3B3"];
+        
+        AGENT2_AGENT [label="🤖 AGENTIC WORKFLOW\nFailures:\n\n• Agent misinterpretation\n• Wrong prompt response\n• Logic error in workflow\n• Model hallucination\n• Node failure or timeout", shape=box, fillcolor="#FF6B6B"];
+        
+        OUTPUT2 [label="📊 Output 2:\n\n⚠️  Failure Category:\nBoth business AND agentic issues\n\n✓ If agentic issues found:\n  → Tag for Agent 3", shape=box, fillcolor="#FFC0CB"];
+    }
+
+    // ============================================================================
+    // LAYER 4: AGENT 3 - FIX AGENTIC WORKFLOW
+    // ============================================================================
+    subgraph cluster_agent3 {
+        label="AGENT 3: Suggest Workflow Improvements\n(ONLY if agentic issues found)";
+        style=filled;
+        fillcolor="#E8FFE8";
+        
+        AGENT3 [label="Agent 3 Analyzes:\n\n\"How can we improve\nthe agent workflow?\"\n\n✅ Output 3:\n\n• Issue identified\n• Root cause analysis\n• Suggested fixes\n• New workflow steps\n• Improved prompt\n• Or: Process redesign", shape=box, fillcolor="#50C878"];
+    }
+
+    // ============================================================================
+    // LAYER 5: DASHBOARD & INSIGHTS
+    // ============================================================================
+    subgraph cluster_dashboard {
+        label="DASHBOARD: Combined Results";
+        style=filled;
+        fillcolor="#F0F0F0";
+        
+        DASHBOARD [label="📊 All Call Data:\n\n✓ Output 1: Call Purpose\n✓ Output 2: Failure Analysis\n  - Business issues\n  - Agentic issues\n✓ Output 3: Improvement Actions\n  (if agentic issues exist)\n\n🎯 Action Items:\n• Fix business process\n• Improve agent workflow\n• Retrain models if needed", shape=box, fillcolor="#FFFFFF", style="filled,bold"];
+    }
+
+    // ============================================================================
+    // WORKFLOW CONTROL PATHS
+    // ============================================================================
+    subgraph cluster_control {
+        label="Workflow Logic";
+        style=filled;
+        fillcolor="#F5F5F5";
+        
+        LOGIC1 [label="Agent 2 checks:\nAre there agentic\nworkflow issues?", shape=diamond, fillcolor="#FFFFCC"];
+        LOGIC2 [label="YES: Pass to Agent 3\nNO: Skip Agent 3", shape=note, fillcolor="lightyellow"];
+    }
+
+    // ============================================================================
+    // DATA FLOW ARROWS
+    // ============================================================================
+    
+    // Input to Agent 1
+    INPUT -> AGENT1 [label="JSON", color="blue", penwidth=2];
+    
+    // Agent 1 to Agent 2
+    AGENT1 -> AGENT2_PROCESS [label="Output 1 +\nfull conversation", color="blue", penwidth=2];
+    
+    // Agent 2 analysis branches
+    AGENT2_PROCESS -> AGENT2_BUSINESS [label="Detect", color="orange"];
+    AGENT2_PROCESS -> AGENT2_AGENT [label="Detect", color="red"];
+    
+    AGENT2_BUSINESS -> OUTPUT2;
+    AGENT2_AGENT -> OUTPUT2;
+    
+    // Agent 2 to Logic Check
+    OUTPUT2 -> LOGIC1 [label="Output 2", color="blue", penwidth=2];
+    LOGIC1 -> LOGIC2 [label="decision"];
+    
+    // Conditional flow to Agent 3
+    LOGIC2 -> AGENT3 [label="IF agentic issues\n→ Agent 3", color="red", penwidth=2, style=dashed];
+    LOGIC2 -> DASHBOARD [label="IF no agentic issues\n→ Dashboard", color="green", penwidth=2, style=dashed];
+    
+    // Agent 3 to Dashboard
+    AGENT3 -> DASHBOARD [label="Output 3:\nImprovements", color="green", penwidth=2];
+
+    // ============================================================================
+    // KEY METRICS
+    // ============================================================================
+    subgraph cluster_metrics {
+        //label="Performance";
+        //style=filled;
+        //fillcolor="#F0F0F0";
+        
+        //M1 [label="⏱️ Total: 6-9 seconds per call", shape=note, fillcolor="lightyellow"];
+        //M2 [label="💰 Cost: Free tier available", shape=note, fillcolor="lightyellow"];
+        //M3 [label="📊 Capacity: ~150 calls/minute", shape=note, fillcolor="lightyellow"];
+    }
+
+}

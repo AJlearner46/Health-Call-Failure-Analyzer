@@ -1,0 +1,233 @@
+<svg width="2323pt" height="390pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="overflow: hidden; "><g id="viewport-20260215115513882" class="svg-pan-zoom_viewport" transform="matrix(0.5497793314386139,0,0,0.5497793314386139,0.000028950479759259906,178.79303036947027)" style="transform: matrix(0.549779, 0, 0, 0.549779, 2.89505e-05, 178.793);">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 386)">
+<title>HealthCallAgentDataflow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-386 2318.75,-386 2318.75,4 -4,4"></polygon>
+<g id="clust5" class="cluster">
+<title>cluster_dashboard</title>
+<polygon fill="#f0f0f0" stroke="black" points="2101.9,-39 2101.9,-259 2314.75,-259 2314.75,-39 2101.9,-39"></polygon>
+<text text-anchor="middle" x="2208.33" y="-242.4" font-family="Times,serif" font-size="14.00">DASHBOARD: Combined Results</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_agent3</title>
+<polygon fill="#e8ffe8" stroke="black" points="1748.01,-138 1748.01,-374 2018.55,-374 2018.55,-138 1748.01,-138"></polygon>
+<text text-anchor="middle" x="1883.28" y="-357.4" font-family="Times,serif" font-size="14.00">AGENT 3: Suggest Workflow Improvements</text>
+<text text-anchor="middle" x="1883.28" y="-340.6" font-family="Times,serif" font-size="14.00">(ONLY if agentic issues found)</text>
+</g>
+<g id="clust1" class="cluster">
+<title>cluster_input</title>
+<polygon fill="#e8f4f8" stroke="black" points="8,-38 8,-196 231.24,-196 231.24,-38 8,-38"></polygon>
+<text text-anchor="middle" x="119.62" y="-179.4" font-family="Times,serif" font-size="14.00">INPUT: Failed Call Data</text>
+<text text-anchor="middle" x="119.62" y="-162.6" font-family="Times,serif" font-size="14.00">(JSON)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_agent1</title>
+<polygon fill="#fff8e8" stroke="black" points="277.91,-18 277.91,-215 478.32,-215 478.32,-18 277.91,-18"></polygon>
+<text text-anchor="middle" x="378.11" y="-198.4" font-family="Times,serif" font-size="14.00">AGENT 1: Identify Call Purpose</text>
+<text text-anchor="middle" x="378.11" y="-181.6" font-family="Times,serif" font-size="14.00">(with AI Prompt)</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_agent2</title>
+<polygon fill="#ffe8f8" stroke="black" points="570.58,-8 570.58,-310 1184.59,-310 1184.59,-8 570.58,-8"></polygon>
+<text text-anchor="middle" x="877.58" y="-293.4" font-family="Times,serif" font-size="14.00">AGENT 2: Analyze Why Purpose Failed</text>
+<text text-anchor="middle" x="877.58" y="-276.6" font-family="Times,serif" font-size="14.00">(with AI Prompt)</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_control</title>
+<polygon fill="#f5f5f5" stroke="black" points="1242.95,-100 1242.95,-236 1652.97,-236 1652.97,-100 1242.95,-100"></polygon>
+<text text-anchor="middle" x="1447.96" y="-219.4" font-family="Times,serif" font-size="14.00">Workflow Logic</text>
+</g>
+<!-- INPUT -->
+<g id="node1" class="node">
+<title>INPUT</title>
+<polygon fill="#4a90e2" stroke="black" points="223.24,-146 16,-146 16,-46 223.24,-46 223.24,-146"></polygon>
+<text text-anchor="middle" x="119.62" y="-132.1" font-family="Arial" font-size="11.00">Call Conversation (JSON)</text>
+<text text-anchor="middle" x="119.62" y="-105.9" font-family="Arial" font-size="11.00">agent: "Hello, how can I help?"</text>
+<text text-anchor="middle" x="119.62" y="-92.7" font-family="Arial" font-size="11.00">customer: "I want to book appointment"</text>
+<text text-anchor="middle" x="119.62" y="-79.5" font-family="Arial" font-size="11.00">agent: "I'm sorry, system is down"</text>
+<text text-anchor="middle" x="119.62" y="-53.3" font-family="Arial" font-size="11.00">❌ Purpose NOT Achieved</text>
+</g>
+<!-- AGENT1 -->
+<g id="node2" class="node">
+<title>AGENT1</title>
+<polygon fill="#ffd700" stroke="black" points="466.32,-165.8 289.91,-165.8 289.91,-26.2 466.32,-26.2 466.32,-165.8"></polygon>
+<text text-anchor="middle" x="378.11" y="-151.9" font-family="Arial" font-size="11.00">Agent 1 Analyzes:</text>
+<text text-anchor="middle" x="378.11" y="-125.7" font-family="Arial" font-size="11.00">Prompt: "What was the customer</text>
+<text text-anchor="middle" x="378.11" y="-112.5" font-family="Arial" font-size="11.00">trying to achieve?"</text>
+<text text-anchor="middle" x="378.11" y="-86.3" font-family="Arial" font-size="11.00">📌 Output 1:</text>
+<text text-anchor="middle" x="378.11" y="-73.1" font-family="Arial" font-size="11.00">• Purpose: booking</text>
+<text text-anchor="middle" x="378.11" y="-59.9" font-family="Arial" font-size="11.00">• Confidence: high</text>
+<text text-anchor="middle" x="378.11" y="-46.7" font-family="Arial" font-size="11.00">• Summary: Customer wanted</text>
+<text text-anchor="middle" x="378.11" y="-33.5" font-family="Arial" font-size="11.00"> &#160;to schedule appointment</text>
+</g>
+<!-- INPUT&#45;&gt;AGENT1 -->
+<g id="edge1" class="edge">
+<title>INPUT-&gt;AGENT1</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M223.47,-96C240.99,-96 259.17,-96 276.63,-96"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="276.48,-99.5 286.48,-96 276.48,-92.5 276.48,-99.5"></polygon>
+<text text-anchor="middle" x="254.58" y="-99" font-family="Arial" font-size="10.00">JSON</text>
+</g>
+<!-- AGENT2_PROCESS -->
+<g id="node3" class="node">
+<title>AGENT2_PROCESS</title>
+<polygon fill="#ff9999" stroke="black" points="722.34,-132.9 578.58,-132.9 578.58,-59.1 722.34,-59.1 722.34,-132.9"></polygon>
+<text text-anchor="middle" x="650.46" y="-119" font-family="Arial" font-size="11.00">Agent 2 Receives:</text>
+<text text-anchor="middle" x="650.46" y="-105.8" font-family="Arial" font-size="11.00">• Output 1 (Purpose)</text>
+<text text-anchor="middle" x="650.46" y="-92.6" font-family="Arial" font-size="11.00">• Full conversation JSON</text>
+<text text-anchor="middle" x="650.46" y="-66.4" font-family="Arial" font-size="11.00">Analyzes BOTH:</text>
+</g>
+<!-- AGENT1&#45;&gt;AGENT2_PROCESS -->
+<g id="edge2" class="edge">
+<title>AGENT1-&gt;AGENT2_PROCESS</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M466.51,-96C498.24,-96 534,-96 565.43,-96"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="565.13,-99.5 575.13,-96 565.13,-92.5 565.13,-99.5"></polygon>
+<text text-anchor="middle" x="524.45" y="-111" font-family="Arial" font-size="10.00">Output 1 +</text>
+<text text-anchor="middle" x="524.45" y="-99" font-family="Arial" font-size="10.00">full conversation</text>
+</g>
+<!-- AGENT2_BUSINESS -->
+<g id="node4" class="node">
+<title>AGENT2_BUSINESS</title>
+<polygon fill="#ffb3b3" stroke="black" points="955.45,-129.7 787.25,-129.7 787.25,-16.3 955.45,-16.3 955.45,-129.7"></polygon>
+<text text-anchor="middle" x="871.35" y="-115.8" font-family="Arial" font-size="11.00">🏢 BUSINESS/OPERATIONAL</text>
+<text text-anchor="middle" x="871.35" y="-102.6" font-family="Arial" font-size="11.00">Failures:</text>
+<text text-anchor="middle" x="871.35" y="-76.4" font-family="Arial" font-size="11.00">• System downtime</text>
+<text text-anchor="middle" x="871.35" y="-63.2" font-family="Arial" font-size="11.00">• Process limitation</text>
+<text text-anchor="middle" x="871.35" y="-50" font-family="Arial" font-size="11.00">• Long wait times</text>
+<text text-anchor="middle" x="871.35" y="-36.8" font-family="Arial" font-size="11.00">• Policy issues</text>
+<text text-anchor="middle" x="871.35" y="-23.6" font-family="Arial" font-size="11.00">• Missing information</text>
+</g>
+<!-- AGENT2_PROCESS&#45;&gt;AGENT2_BUSINESS -->
+<g id="edge3" class="edge">
+<title>AGENT2_PROCESS-&gt;AGENT2_BUSINESS</title>
+<path fill="none" stroke="orange" d="M722.83,-88.5C739.69,-86.73 757.93,-84.81 775.65,-82.95"></path>
+<polygon fill="orange" stroke="orange" points="775.81,-86.45 785.39,-81.93 775.08,-79.49 775.81,-86.45"></polygon>
+<text text-anchor="middle" x="754.79" y="-89" font-family="Arial" font-size="10.00">Detect</text>
+</g>
+<!-- AGENT2_AGENT -->
+<g id="node5" class="node">
+<title>AGENT2_AGENT</title>
+<polygon fill="#ff6b6b" stroke="black" points="945.96,-260.7 796.74,-260.7 796.74,-147.3 945.96,-147.3 945.96,-260.7"></polygon>
+<text text-anchor="middle" x="871.35" y="-246.8" font-family="Arial" font-size="11.00">🤖 AGENTIC WORKFLOW</text>
+<text text-anchor="middle" x="871.35" y="-233.6" font-family="Arial" font-size="11.00">Failures:</text>
+<text text-anchor="middle" x="871.35" y="-207.4" font-family="Arial" font-size="11.00">• Agent misinterpretation</text>
+<text text-anchor="middle" x="871.35" y="-194.2" font-family="Arial" font-size="11.00">• Wrong prompt response</text>
+<text text-anchor="middle" x="871.35" y="-181" font-family="Arial" font-size="11.00">• Logic error in workflow</text>
+<text text-anchor="middle" x="871.35" y="-167.8" font-family="Arial" font-size="11.00">• Model hallucination</text>
+<text text-anchor="middle" x="871.35" y="-154.6" font-family="Arial" font-size="11.00">• Node failure or timeout</text>
+</g>
+<!-- AGENT2_PROCESS&#45;&gt;AGENT2_AGENT -->
+<g id="edge4" class="edge">
+<title>AGENT2_PROCESS-&gt;AGENT2_AGENT</title>
+<path fill="none" stroke="red" d="M722.83,-131.21C743.09,-141.21 765.35,-152.19 786.29,-162.52"></path>
+<polygon fill="red" stroke="red" points="784.57,-165.58 795.09,-166.87 787.67,-159.3 784.57,-165.58"></polygon>
+<text text-anchor="middle" x="754.79" y="-156" font-family="Arial" font-size="10.00">Detect</text>
+</g>
+<!-- OUTPUT2 -->
+<g id="node6" class="node">
+<title>OUTPUT2</title>
+<polygon fill="#ffc0cb" stroke="black" points="1176.59,-206 992.45,-206 992.45,-106 1176.59,-106 1176.59,-206"></polygon>
+<text text-anchor="middle" x="1084.52" y="-192.1" font-family="Arial" font-size="11.00">📊 Output 2:</text>
+<text text-anchor="middle" x="1084.52" y="-165.9" font-family="Arial" font-size="11.00">⚠️ &#160;Failure Category:</text>
+<text text-anchor="middle" x="1084.52" y="-152.7" font-family="Arial" font-size="11.00">Both business AND agentic issues</text>
+<text text-anchor="middle" x="1084.52" y="-126.5" font-family="Arial" font-size="11.00">✓ If agentic issues found:</text>
+<text text-anchor="middle" x="1084.52" y="-113.3" font-family="Arial" font-size="11.00"> &#160;→ Tag for Agent 3</text>
+</g>
+<!-- AGENT2_BUSINESS&#45;&gt;OUTPUT2 -->
+<g id="edge5" class="edge">
+<title>AGENT2_BUSINESS-&gt;OUTPUT2</title>
+<path fill="none" stroke="black" d="M955.81,-105.8C964.25,-109.12 972.89,-112.52 981.5,-115.9"></path>
+<polygon fill="black" stroke="black" points="979.97,-119.06 990.56,-119.46 982.53,-112.55 979.97,-119.06"></polygon>
+</g>
+<!-- AGENT2_AGENT&#45;&gt;OUTPUT2 -->
+<g id="edge6" class="edge">
+<title>AGENT2_AGENT-&gt;OUTPUT2</title>
+<path fill="none" stroke="black" d="M946.21,-187.21C957.59,-184.62 969.51,-181.91 981.38,-179.22"></path>
+<polygon fill="black" stroke="black" points="981.79,-182.71 990.77,-177.08 980.24,-175.89 981.79,-182.71"></polygon>
+</g>
+<!-- LOGIC1 -->
+<g id="node9" class="node">
+<title>LOGIC1</title>
+<polygon fill="#ffffcc" stroke="black" points="1350.73,-203.6 1250.95,-156 1350.73,-108.4 1450.5,-156 1350.73,-203.6"></polygon>
+<text text-anchor="middle" x="1350.73" y="-165.9" font-family="Arial" font-size="11.00">Agent 2 checks:</text>
+<text text-anchor="middle" x="1350.73" y="-152.7" font-family="Arial" font-size="11.00">Are there agentic</text>
+<text text-anchor="middle" x="1350.73" y="-139.5" font-family="Arial" font-size="11.00">workflow issues?</text>
+</g>
+<!-- OUTPUT2&#45;&gt;LOGIC1 -->
+<g id="edge7" class="edge">
+<title>OUTPUT2-&gt;LOGIC1</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M1176.82,-156C1196.24,-156 1216.97,-156 1237.08,-156"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="1236.82,-159.5 1246.82,-156 1236.82,-152.5 1236.82,-159.5"></polygon>
+<text text-anchor="middle" x="1213.77" y="-159" font-family="Arial" font-size="10.00">Output 2</text>
+</g>
+<!-- AGENT3 -->
+<g id="node7" class="node">
+<title>AGENT3</title>
+<polygon fill="#50c878" stroke="black" points="1948.55,-324.5 1817.01,-324.5 1817.01,-145.5 1948.55,-145.5 1948.55,-324.5"></polygon>
+<text text-anchor="middle" x="1882.78" y="-310.6" font-family="Arial" font-size="11.00">Agent 3 Analyzes:</text>
+<text text-anchor="middle" x="1882.78" y="-284.4" font-family="Arial" font-size="11.00">"How can we improve</text>
+<text text-anchor="middle" x="1882.78" y="-271.2" font-family="Arial" font-size="11.00">the agent workflow?"</text>
+<text text-anchor="middle" x="1882.78" y="-245" font-family="Arial" font-size="11.00">✅ Output 3:</text>
+<text text-anchor="middle" x="1882.78" y="-218.8" font-family="Arial" font-size="11.00">• Issue identified</text>
+<text text-anchor="middle" x="1882.78" y="-205.6" font-family="Arial" font-size="11.00">• Root cause analysis</text>
+<text text-anchor="middle" x="1882.78" y="-192.4" font-family="Arial" font-size="11.00">• Suggested fixes</text>
+<text text-anchor="middle" x="1882.78" y="-179.2" font-family="Arial" font-size="11.00">• New workflow steps</text>
+<text text-anchor="middle" x="1882.78" y="-166" font-family="Arial" font-size="11.00">• Improved prompt</text>
+<text text-anchor="middle" x="1882.78" y="-152.8" font-family="Arial" font-size="11.00">• Or: Process redesign</text>
+</g>
+<!-- DASHBOARD -->
+<g id="node8" class="node">
+<title>DASHBOARD</title>
+<polygon fill="#ffffff" stroke="black" stroke-width="2" points="2297.75,-226.6 2117.9,-226.6 2117.9,-47.4 2297.75,-47.4 2297.75,-226.6"></polygon>
+<text text-anchor="middle" x="2207.83" y="-212.7" font-family="Arial" font-size="11.00">📊 All Call Data:</text>
+<text text-anchor="middle" x="2207.83" y="-186.5" font-family="Arial" font-size="11.00">✓ Output 1: Call Purpose</text>
+<text text-anchor="middle" x="2207.83" y="-173.3" font-family="Arial" font-size="11.00">✓ Output 2: Failure Analysis</text>
+<text text-anchor="middle" x="2207.83" y="-160.1" font-family="Arial" font-size="11.00"> &#160;- Business issues</text>
+<text text-anchor="middle" x="2207.83" y="-146.9" font-family="Arial" font-size="11.00"> &#160;- Agentic issues</text>
+<text text-anchor="middle" x="2207.83" y="-133.7" font-family="Arial" font-size="11.00">✓ Output 3: Improvement Actions</text>
+<text text-anchor="middle" x="2207.83" y="-120.5" font-family="Arial" font-size="11.00"> &#160;(if agentic issues exist)</text>
+<text text-anchor="middle" x="2207.83" y="-94.3" font-family="Arial" font-size="11.00">🎯 Action Items:</text>
+<text text-anchor="middle" x="2207.83" y="-81.1" font-family="Arial" font-size="11.00">• Fix business process</text>
+<text text-anchor="middle" x="2207.83" y="-67.9" font-family="Arial" font-size="11.00">• Improve agent workflow</text>
+<text text-anchor="middle" x="2207.83" y="-54.7" font-family="Arial" font-size="11.00">• Retrain models if needed</text>
+</g>
+<!-- AGENT3&#45;&gt;DASHBOARD -->
+<g id="edge11" class="edge">
+<title>AGENT3-&gt;DASHBOARD</title>
+<path fill="none" stroke="green" stroke-width="2" d="M1948.76,-215.29C1993.53,-201.71 2053.92,-183.38 2105.03,-167.88"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="2106.02,-171.24 2114.57,-164.99 2103.99,-164.54 2106.02,-171.24"></polygon>
+<text text-anchor="middle" x="2060.23" y="-203" font-family="Arial" font-size="10.00">Output 3:</text>
+<text text-anchor="middle" x="2060.23" y="-191" font-family="Arial" font-size="10.00">Improvements</text>
+</g>
+<!-- LOGIC2 -->
+<g id="node10" class="node">
+<title>LOGIC2</title>
+<polygon fill="lightyellow" stroke="black" points="1638.97,-174 1523.19,-174 1523.19,-138 1644.97,-138 1644.97,-168 1638.97,-174"></polygon>
+<polyline fill="none" stroke="black" points="1638.97,-174 1638.97,-168"></polyline>
+<polyline fill="none" stroke="black" points="1644.97,-168 1638.97,-168"></polyline>
+<text text-anchor="middle" x="1584.08" y="-159.3" font-family="Arial" font-size="11.00">YES: Pass to Agent 3</text>
+<text text-anchor="middle" x="1584.08" y="-146.1" font-family="Arial" font-size="11.00">NO: Skip Agent 3</text>
+</g>
+<!-- LOGIC1&#45;&gt;LOGIC2 -->
+<g id="edge8" class="edge">
+<title>LOGIC1-&gt;LOGIC2</title>
+<path fill="none" stroke="black" d="M1451.52,-156C1471.77,-156 1492.68,-156 1511.71,-156"></path>
+<polygon fill="black" stroke="black" points="1511.47,-159.5 1521.47,-156 1511.47,-152.5 1511.47,-159.5"></polygon>
+<text text-anchor="middle" x="1486.84" y="-159" font-family="Arial" font-size="10.00">decision</text>
+</g>
+<!-- LOGIC2&#45;&gt;AGENT3 -->
+<g id="edge9" class="edge">
+<title>LOGIC2-&gt;AGENT3</title>
+<path fill="none" stroke="red" stroke-width="2" stroke-dasharray="5,2" d="M1645.12,-171.99C1691.01,-184.21 1754.64,-201.15 1804.36,-214.39"></path>
+<polygon fill="red" stroke="red" stroke-width="2" points="1803.19,-217.7 1813.75,-216.89 1804.99,-210.93 1803.19,-217.7"></polygon>
+<text text-anchor="middle" x="1700.49" y="-210" font-family="Arial" font-size="10.00">IF agentic issues</text>
+<text text-anchor="middle" x="1700.49" y="-198" font-family="Arial" font-size="10.00">→ Agent 3</text>
+</g>
+<!-- LOGIC2&#45;&gt;DASHBOARD -->
+<g id="edge10" class="edge">
+<title>LOGIC2-&gt;DASHBOARD</title>
+<path fill="none" stroke="green" stroke-width="2" stroke-dasharray="5,2" d="M1636.4,-137.59C1668.1,-127.2 1709.87,-115.28 1748.01,-110 1869.92,-93.12 2011.49,-106.38 2104.77,-119.59"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="2104.21,-123.05 2114.61,-121.02 2105.22,-116.12 2104.21,-123.05"></polygon>
+<text text-anchor="middle" x="1882.78" y="-125" font-family="Arial" font-size="10.00">IF no agentic issues</text>
+<text text-anchor="middle" x="1882.78" y="-113" font-family="Arial" font-size="10.00">→ Dashboard</text>
+</g>
+</g>
+</g></svg>
