@@ -11,7 +11,7 @@ An AI tool that reads customer–agent call conversations and explains:
 It works like a smart call-center coach — instead of manually checking calls, AI audits them automatically.
 
 ## DATAFLOW
-<img src="D:\document\data sc\VibeCoding\health_agent\DATAFLOW.svg" alt="Alt text" width="100" height="50" style="max-width:100%;">
+![DATAFLOW](https://github.com/AJlearner46/Health-Call-Failure-Analyzer/blob/main/DATAFLOW.svg)
 
 
 ## Features
