@@ -18,53 +18,80 @@ Conversation:
 
 Return JSON: { "purpose": "...", "confidence": "high|medium|low", "summary": "..." }`;
 
-export const FAILURE_REASON_SYSTEM = `You are an expert at analyzing why customer service calls fail to meet their goal.
-Given the call purpose and the full conversation, identify WHY the purpose was not achieved and what went wrong.
+export const FAILURE_ANALYSIS_SYSTEM = `You are an expert at diagnosing failed customer service workflows.
+Given call purpose and full conversation, identify WHY the purpose was not achieved across TWO dimensions:
 
-Reason categories (choose best fit):
+1) BUSINESS / OPERATIONAL failure:
 - system_failure: technical/system down, tool unavailable
 - process_limitation: policy, workflow, or process blocked resolution
 - wait_time: long hold, callback delay, consultant unavailable
-- miscommunication: confusion, wrong info, language/expectation mismatch
-- incomplete_info: missing details, customer did not provide, agent did not ask
 - other: other clear reason
 
-Respond with valid JSON only. Use keys: reason_category, explanation, evidence (list of short quotes from the conversation), recommendation.`;
+2) AGENTIC WORKFLOW failure:
+- misinterpretation: agent misunderstood user intent/context
+- logic_error: wrong reasoning path or bad decision sequence
+- missing_probe: agent did not ask needed follow-up questions
+- handoff_error: poor escalation/handoff workflow
+- prompt_gap: response quality impacted by prompt/workflow design
+- none: no clear agentic issue
 
-export const FAILURE_REASON_USER = `Call purpose: {purpose}
+Respond with valid JSON only using keys:
+- business_operational: { reason_category, explanation, evidence }
+- agentic_workflow: { has_agentic_issues, issue_types, explanation, evidence }
+- combined_summary
+- immediate_actions (list of quick actions)
+Do not output markdown.`;
+
+export const FAILURE_ANALYSIS_USER = `Call purpose: {purpose}
 Summary: {summary}
 
 Full conversation:
 {conversation_text}
 
-Why was this purpose NOT achieved? Return JSON:
+Analyze both failure dimensions and return JSON:
 {
-  "reason_category": "...",
-  "explanation": "...",
-  "evidence": ["quote1", "quote2"],
-  "recommendation": "..."
+  "business_operational": {
+    "reason_category": "...",
+    "explanation": "...",
+    "evidence": ["quote1", "quote2"]
+  },
+  "agentic_workflow": {
+    "has_agentic_issues": true,
+    "issue_types": ["misinterpretation", "logic_error"],
+    "explanation": "...",
+    "evidence": ["quoteA", "quoteB"]
+  },
+  "combined_summary": "...",
+  "immediate_actions": ["...", "..."]
 }`;
 
-export const ACTION_PLAN_SYSTEM = `You are an operations expert.
-You are given the call purpose and failure analysis, and must create an end-to-end executable recovery plan.
+export const IMPROVEMENT_ACTIONS_SYSTEM = `You are an expert in AI workflow optimization.
+You are given purpose and failure analysis with agentic workflow issues.
+Create concrete improvements to fix agent design and execution quality.
 
 Return valid JSON only with keys:
-- goal: one-line resolution goal
-- steps: ordered list of actionable steps (4-8 items, concrete and practical)
-- owner: primary owner/team
-- success_criteria: how to verify resolution is complete`;
+- summary
+- improved_prompts (list)
+- new_workflow_steps (list)
+- process_redesign (list)
+- alternative_approaches (list)
+- priority_actions (list, most important first)`;
 
-export const ACTION_PLAN_USER = `Call purpose: {purpose}
+export const IMPROVEMENT_ACTIONS_USER = `Call purpose: {purpose}
 Purpose summary: {purpose_summary}
-Failure category: {reason_category}
-Failure explanation: {explanation}
-Recommendation: {recommendation}
-Evidence: {evidence}
+Business/Operational reason: {business_reason_category}
+Business explanation: {business_explanation}
+Agentic issues present: {has_agentic_issues}
+Agentic issue types: {agentic_issue_types}
+Agentic explanation: {agentic_explanation}
+Agentic evidence: {agentic_evidence}
 
-Create the end-to-end action plan in JSON:
+Generate workflow improvement actions in JSON:
 {
-  "goal": "...",
-  "steps": ["Step 1 ...", "Step 2 ..."],
-  "owner": "...",
-  "success_criteria": "..."
+  "summary": "...",
+  "improved_prompts": ["..."],
+  "new_workflow_steps": ["..."],
+  "process_redesign": ["..."],
+  "alternative_approaches": ["..."],
+  "priority_actions": ["..."]
 }`;

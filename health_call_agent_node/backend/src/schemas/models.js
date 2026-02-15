@@ -12,6 +12,22 @@ function toStringArray(value) {
     .filter(Boolean);
 }
 
+function toBooleanOr(value, fallback = false) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+  if (typeof value === "string") {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === "true") {
+      return true;
+    }
+    if (normalized === "false") {
+      return false;
+    }
+  }
+  return fallback;
+}
+
 export function validateConversationInput(body) {
   if (!body || typeof body !== "object") {
     return { ok: false, error: "Body must be a JSON object." };
@@ -41,22 +57,40 @@ export function normalizePurposeResult(data) {
   };
 }
 
-export function normalizeFailureReasonResult(data) {
+export function normalizeFailureAnalysisResult(data) {
   const obj = data && typeof data === "object" ? data : {};
+  const business = obj.business_operational && typeof obj.business_operational === "object"
+    ? obj.business_operational
+    : {};
+  const agentic = obj.agentic_workflow && typeof obj.agentic_workflow === "object"
+    ? obj.agentic_workflow
+    : {};
+
   return {
-    reason_category: toStringOr(obj.reason_category, "other"),
-    explanation: toStringOr(obj.explanation),
-    evidence: toStringArray(obj.evidence),
-    recommendation: toStringOr(obj.recommendation),
+    business_operational: {
+      reason_category: toStringOr(business.reason_category, "other"),
+      explanation: toStringOr(business.explanation),
+      evidence: toStringArray(business.evidence),
+    },
+    agentic_workflow: {
+      has_agentic_issues: toBooleanOr(agentic.has_agentic_issues, false),
+      issue_types: toStringArray(agentic.issue_types),
+      explanation: toStringOr(agentic.explanation),
+      evidence: toStringArray(agentic.evidence),
+    },
+    combined_summary: toStringOr(obj.combined_summary),
+    immediate_actions: toStringArray(obj.immediate_actions),
   };
 }
 
-export function normalizeActionPlanResult(data) {
+export function normalizeImprovementActionsResult(data) {
   const obj = data && typeof data === "object" ? data : {};
   return {
-    goal: toStringOr(obj.goal),
-    steps: toStringArray(obj.steps),
-    owner: toStringOr(obj.owner),
-    success_criteria: toStringOr(obj.success_criteria),
+    summary: toStringOr(obj.summary),
+    improved_prompts: toStringArray(obj.improved_prompts),
+    new_workflow_steps: toStringArray(obj.new_workflow_steps),
+    process_redesign: toStringArray(obj.process_redesign),
+    alternative_approaches: toStringArray(obj.alternative_approaches),
+    priority_actions: toStringArray(obj.priority_actions),
   };
 }

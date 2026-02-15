@@ -1,0 +1,24 @@
+digraph HealthCallAgentWorkflow {
+  rankdir=TB;
+  node [shape=box, style="rounded,filled", fillcolor="#f4f7fb", color="#2f3b52", fontname="Arial"];
+  edge [color="#2f3b52"];
+
+  input [label="JSON Call Data\n(agent-customer conversation,\npurpose NOT achieved)"];
+
+  agent1 [label="AGENT 1\nIdentify PURPOSE of call\nOutput 1:\nPurpose + Confidence + Summary"];
+
+  agent2 [label="AGENT 2\nAnalyze why purpose NOT achieved\nOutput 2:\nBusiness/Operational + Agentic Workflow"];
+
+  decision [shape=diamond, fillcolor="#fff2d6", label="Agentic issues present?"];
+
+  agent3 [label="AGENT 3\nSuggest workflow improvements\nOutput 3:\nImproved prompts, workflow steps,\nprocess redesign, alternatives"];
+
+  dashboard [label="Dashboard (Simple Frontend)\nShows Output 1 + Output 2 + Output 3 (if any)\nReady for action"];
+
+  input -> agent1;
+  agent1 -> agent2;
+  agent2 -> decision;
+  decision -> agent3 [label="YES"];
+  decision -> dashboard [label="NO"];
+  agent3 -> dashboard;
+}

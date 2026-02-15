@@ -47,8 +47,10 @@ router.post("/analyze", async (req, res) => {
 
     return res.json({
       purpose: result.purpose,
-      failure_reason: result.failure_reason,
-      action_plan: result.action_plan,
+      failure_analysis: result.failure_analysis,
+      has_agentic_issues: result.has_agentic_issues,
+      improvement_actions: result.improvement_actions,
+      decision: result.decision,
       call_id: result.call_id ?? null,
     });
   } catch (error) {
@@ -80,8 +82,10 @@ router.post("/analyze-call", async (req, res) => {
 
     return res.json({
       purpose: result.purpose,
-      failure_reason: result.failure_reason,
-      action_plan: result.action_plan,
+      failure_analysis: result.failure_analysis,
+      has_agentic_issues: result.has_agentic_issues,
+      improvement_actions: result.improvement_actions,
+      decision: result.decision,
       call_id: result.call_id ?? req.body.call_id ?? null,
     });
   } catch (error) {

@@ -341,7 +341,7 @@ export default function App() {
       <section className="hero">
         <div>
           <h1>Health Call Agent</h1>
-          <p className="muted">Analyze failed health call conversations: detect purpose, why it failed, and exact recovery plan.</p>
+          <p className="muted">Agent workflow: Purpose detection, dual failure analysis, and conditional workflow improvement actions.</p>
         </div>
       </section>
 
@@ -433,8 +433,12 @@ export default function App() {
         <section className="results">
           {results.map((item) => {
             const purpose = item.result?.purpose || {};
-            const failure = item.result?.failure_reason || {};
-            const plan = item.result?.action_plan || {};
+            const failure = item.result?.failure_analysis || {};
+            const business = failure.business_operational || {};
+            const agentic = failure.agentic_workflow || {};
+            const improvements = item.result?.improvement_actions || null;
+            const hasAgentic = Boolean(item.result?.has_agentic_issues);
+            const decision = item.result?.decision || "frontend_only";
 
             return (
               <article key={item.callId} className="result-card">
@@ -442,7 +446,7 @@ export default function App() {
                 {item.result ? (
                   <div className="result-grid">
                     <div className="block">
-                      <h3>Purpose</h3>
+                      <h3>Output 1: Purpose</h3>
                       <p>
                         <strong>{purpose.purpose || "-"}</strong> (confidence: {purpose.confidence || "-"})
                       </p>
@@ -450,53 +454,127 @@ export default function App() {
                     </div>
 
                     <div className="block">
-                      <h3>Why purpose was not achieved</h3>
+                      <h3>Output 2: Failure Analysis</h3>
                       <p>
-                        <strong>Category:</strong> {failure.reason_category || "-"}
+                        <strong>Business/Operational:</strong> {business.reason_category || "-"}
                       </p>
                       <p>
-                        <strong>Explanation:</strong> {failure.explanation || ""}
+                        <strong>Business Explanation:</strong> {business.explanation || ""}
                       </p>
-                      {Array.isArray(failure.evidence) && failure.evidence.length > 0 && (
+                      {Array.isArray(business.evidence) && business.evidence.length > 0 && (
                         <>
                           <p>
-                            <strong>Evidence:</strong>
+                            <strong>Business Evidence:</strong>
                           </p>
                           <ul>
-                            {failure.evidence.map((entry) => (
+                            {business.evidence.map((entry) => (
                               <li key={entry}>{entry}</li>
                             ))}
                           </ul>
                         </>
                       )}
                       <p>
-                        <strong>Recommendation:</strong> {failure.recommendation || ""}
+                        <strong>Agentic Issues:</strong> {hasAgentic ? "Yes" : "No"}
+                      </p>
+                      {Array.isArray(agentic.issue_types) && agentic.issue_types.length > 0 && (
+                        <p>
+                          <strong>Agentic Types:</strong> {agentic.issue_types.join(", ")}
+                        </p>
+                      )}
+                      <p>
+                        <strong>Agentic Explanation:</strong> {agentic.explanation || ""}
+                      </p>
+                      {Array.isArray(agentic.evidence) && agentic.evidence.length > 0 && (
+                        <>
+                          <p>
+                            <strong>Agentic Evidence:</strong>
+                          </p>
+                          <ul>
+                            {agentic.evidence.map((entry) => (
+                              <li key={entry}>{entry}</li>
+                            ))}
+                          </ul>
+                        </>
+                      )}
+                      <p>
+                        <strong>Combined Summary:</strong> {failure.combined_summary || ""}
                       </p>
                     </div>
 
                     <div className="block">
-                      <h3>Actionable plan</h3>
+                      <h3>Output 3: Improvement Actions</h3>
                       <p>
-                        <strong>Goal:</strong> {plan.goal || ""}
+                        <strong>Decision:</strong> {decision}
                       </p>
-                      <p>
-                        <strong>Owner:</strong> {plan.owner || ""}
-                      </p>
-                      {Array.isArray(plan.steps) && plan.steps.length > 0 && (
+                      {improvements ? (
                         <>
                           <p>
-                            <strong>Steps:</strong>
+                            <strong>Summary:</strong> {improvements.summary || ""}
                           </p>
-                          <ol>
-                            {plan.steps.map((step) => (
-                              <li key={step}>{step}</li>
-                            ))}
-                          </ol>
+                          {Array.isArray(improvements.improved_prompts) && improvements.improved_prompts.length > 0 && (
+                            <>
+                              <p>
+                                <strong>Improved Prompts:</strong>
+                              </p>
+                              <ul>
+                                {improvements.improved_prompts.map((entry) => (
+                                  <li key={entry}>{entry}</li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+                          {Array.isArray(improvements.new_workflow_steps) && improvements.new_workflow_steps.length > 0 && (
+                            <>
+                              <p>
+                                <strong>New Workflow Steps:</strong>
+                              </p>
+                              <ol>
+                                {improvements.new_workflow_steps.map((entry) => (
+                                  <li key={entry}>{entry}</li>
+                                ))}
+                              </ol>
+                            </>
+                          )}
+                          {Array.isArray(improvements.process_redesign) && improvements.process_redesign.length > 0 && (
+                            <>
+                              <p>
+                                <strong>Process Redesign:</strong>
+                              </p>
+                              <ul>
+                                {improvements.process_redesign.map((entry) => (
+                                  <li key={entry}>{entry}</li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+                          {Array.isArray(improvements.alternative_approaches) && improvements.alternative_approaches.length > 0 && (
+                            <>
+                              <p>
+                                <strong>Alternative Approaches:</strong>
+                              </p>
+                              <ul>
+                                {improvements.alternative_approaches.map((entry) => (
+                                  <li key={entry}>{entry}</li>
+                                ))}
+                              </ul>
+                            </>
+                          )}
+                          {Array.isArray(improvements.priority_actions) && improvements.priority_actions.length > 0 && (
+                            <>
+                              <p>
+                                <strong>Priority Actions:</strong>
+                              </p>
+                              <ol>
+                                {improvements.priority_actions.map((entry) => (
+                                  <li key={entry}>{entry}</li>
+                                ))}
+                              </ol>
+                            </>
+                          )}
                         </>
+                      ) : (
+                        <p>Agent 3 skipped. No agentic workflow issues detected.</p>
                       )}
-                      <p>
-                        <strong>Success Criteria:</strong> {plan.success_criteria || ""}
-                      </p>
                     </div>
                   </div>
                 ) : (

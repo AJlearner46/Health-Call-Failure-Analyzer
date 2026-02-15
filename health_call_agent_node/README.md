@@ -1,6 +1,6 @@
 # Health Call Agent (Node.js Replica)
 
-This is a separate replica of `health_call_agent` with the same functional flow, built with:
+This is a separate replica of `health_call_agent`, now tuned to a 3-agent conditional workflow:
 
 - Backend: Node.js + Express + LangGraph.js + Gemini (free models)
 - Frontend: React + Vite
@@ -85,11 +85,22 @@ Frontend URL:
 
 ## API compatibility
 
-The backend mirrors original response structure:
+The backend exposes the same endpoints, with updated workflow outputs:
 
 - `purpose` with `purpose`, `confidence`, `summary`
-- `failure_reason` with `reason_category`, `explanation`, `evidence`, `recommendation`
-- `action_plan` with `goal`, `steps`, `owner`, `success_criteria`
+- `failure_analysis` with:
+  - `business_operational`: `reason_category`, `explanation`, `evidence`
+  - `agentic_workflow`: `has_agentic_issues`, `issue_types`, `explanation`, `evidence`
+  - `combined_summary`, `immediate_actions`
+- `improvement_actions` (only when agentic issues exist), with:
+  - `summary`
+  - `improved_prompts`
+  - `new_workflow_steps`
+  - `process_redesign`
+  - `alternative_approaches`
+  - `priority_actions`
+- `has_agentic_issues` boolean
+- `decision` (`agent3_executed` or `frontend_only`)
 - optional `call_id`
 
 ## Gemini model defaults

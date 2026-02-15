@@ -4,15 +4,15 @@ import { ChatGoogleGenerativeAI } from "@langchain/google-genai";
 import {
   PURPOSE_CLASSIFY_SYSTEM,
   PURPOSE_CLASSIFY_USER,
-  FAILURE_REASON_SYSTEM,
-  FAILURE_REASON_USER,
-  ACTION_PLAN_SYSTEM,
-  ACTION_PLAN_USER,
+  FAILURE_ANALYSIS_SYSTEM,
+  FAILURE_ANALYSIS_USER,
+  IMPROVEMENT_ACTIONS_SYSTEM,
+  IMPROVEMENT_ACTIONS_USER,
 } from "./prompts.js";
 import {
   normalizePurposeResult,
-  normalizeFailureReasonResult,
-  normalizeActionPlanResult,
+  normalizeFailureAnalysisResult,
+  normalizeImprovementActionsResult,
 } from "../schemas/models.js";
 
 function getLlm(apiKey, modelName, timeoutSeconds, maxRetries) {
@@ -149,7 +149,7 @@ export async function classifyPurpose(state, apiKey, modelCandidates, timeoutSec
   };
 }
 
-export async function analyzeFailureReason(state, apiKey, modelCandidates, timeoutSeconds, maxRetries) {
+export async function analyzeFailure(state, apiKey, modelCandidates, timeoutSeconds, maxRetries) {
   const conversationText = state.conversation_text;
   const purposeLabel = state.purpose_label || "other";
   const purposeSummary = state.purpose_summary || "";
@@ -163,9 +163,9 @@ export async function analyzeFailureReason(state, apiKey, modelCandidates, timeo
   }
 
   const messages = [
-    new SystemMessage(FAILURE_REASON_SYSTEM),
+    new SystemMessage(FAILURE_ANALYSIS_SYSTEM),
     new HumanMessage(
-      fillTemplate(FAILURE_REASON_USER, {
+      fillTemplate(FAILURE_ANALYSIS_USER, {
         purpose: purposeLabel,
         summary: purposeSummary,
         conversation_text: conversationText,
@@ -182,18 +182,23 @@ export async function analyzeFailureReason(state, apiKey, modelCandidates, timeo
   );
 
   const data = parseJsonFromResponse(normalizeResponseText(response));
-  const failureResult = normalizeFailureReasonResult(data);
+  const failureResult = normalizeFailureAnalysisResult(data);
+  const hasAgenticIssues = Boolean(failureResult.agentic_workflow?.has_agentic_issues);
 
   return {
-    failure_reason_result: failureResult,
+    failure_analysis_result: failureResult,
+    has_agentic_issues: hasAgenticIssues,
+    decision_path: hasAgenticIssues ? "agent3_required" : "frontend_only",
     model_used: usedModel,
   };
 }
 
-export async function generateActionPlan(state, apiKey, modelCandidates, timeoutSeconds, maxRetries) {
+export async function suggestWorkflowImprovements(state, apiKey, modelCandidates, timeoutSeconds, maxRetries) {
   const purposeLabel = state.purpose_label || "other";
   const purposeSummary = state.purpose_summary || "";
-  const failure = state.failure_reason_result || {};
+  const failure = state.failure_analysis_result || {};
+  const business = failure.business_operational || {};
+  const agentic = failure.agentic_workflow || {};
 
   const preferredModel = state.model_used;
   const deduped = [];
@@ -204,15 +209,17 @@ export async function generateActionPlan(state, apiKey, modelCandidates, timeout
   }
 
   const messages = [
-    new SystemMessage(ACTION_PLAN_SYSTEM),
+    new SystemMessage(IMPROVEMENT_ACTIONS_SYSTEM),
     new HumanMessage(
-      fillTemplate(ACTION_PLAN_USER, {
+      fillTemplate(IMPROVEMENT_ACTIONS_USER, {
         purpose: purposeLabel,
         purpose_summary: purposeSummary,
-        reason_category: failure.reason_category || "other",
-        explanation: failure.explanation || "",
-        recommendation: failure.recommendation || "",
-        evidence: Array.isArray(failure.evidence) ? failure.evidence : [],
+        business_reason_category: business.reason_category || "other",
+        business_explanation: business.explanation || "",
+        has_agentic_issues: Boolean(agentic.has_agentic_issues),
+        agentic_issue_types: Array.isArray(agentic.issue_types) ? agentic.issue_types : [],
+        agentic_explanation: agentic.explanation || "",
+        agentic_evidence: Array.isArray(agentic.evidence) ? agentic.evidence : [],
       }),
     ),
   ];
@@ -226,10 +233,11 @@ export async function generateActionPlan(state, apiKey, modelCandidates, timeout
   );
 
   const data = parseJsonFromResponse(normalizeResponseText(response));
-  const actionPlanResult = normalizeActionPlanResult(data);
+  const improvementActions = normalizeImprovementActionsResult(data);
 
   return {
-    action_plan_result: actionPlanResult,
+    improvement_actions_result: improvementActions,
+    decision_path: "agent3_executed",
     model_used: usedModel,
   };
 }
