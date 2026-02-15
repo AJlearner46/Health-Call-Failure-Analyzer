@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+:root {
+  --bg-0: #f6f3ec;
+  --bg-1: #f0ede4;
+  --card: rgba(255, 255, 255, 0.85);
+  --ink: #1d2a2f;
+  --ink-soft: #4f5d63;
+  --brand: #0f7d71;
+  --brand-deep: #0b5a52;
+  --warn: #ab4d31;
+  --ok: #1d7f4f;
+  --border: rgba(15, 43, 51, 0.16);
+  --shadow: 0 18px 40px rgba(19, 42, 48, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Space Grotesk", "Segoe UI", sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 12% 8%, rgba(31, 145, 118, 0.18), transparent 36%),
+    radial-gradient(circle at 92% 10%, rgba(237, 124, 66, 0.16), transparent 32%),
+    linear-gradient(160deg, var(--bg-0), var(--bg-1));
+}
+
+.page-shell {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 28px 16px 56px;
+}
+
+.hero {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(1.6rem, 4vw, 2.2rem);
+  line-height: 1.1;
+}
+
+.muted {
+  margin: 8px 0 0;
+  color: var(--ink-soft);
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(4px);
+}
+
+.health-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.health-ok {
+  background: var(--ok);
+}
+
+.health-warn {
+  background: var(--warn);
+}
+
+.mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.mode-btn {
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  color: var(--ink);
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform 0.15s ease, background 0.2s ease;
+}
+
+.mode-btn:hover {
+  transform: translateY(-1px);
+}
+
+.mode-btn.active {
+  background: var(--brand);
+  color: #fff;
+  border-color: transparent;
+}
+
+textarea,
+input[type="file"] {
+  width: 100%;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 12px;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.9rem;
+  background: rgba(255, 255, 255, 0.88);
+}
+
+textarea {
+  min-height: 200px;
+  resize: vertical;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 14px;
+  flex-wrap: wrap;
+}
+
+.primary-btn {
+  border: 0;
+  border-radius: 12px;
+  background: var(--brand);
+  color: #fff;
+  font-family: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 10px 16px;
+  transition: background 0.2s ease;
+}
+
+.primary-btn:hover {
+  background: var(--brand-deep);
+}
+
+.primary-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.notice {
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin-top: 10px;
+  font-size: 0.92rem;
+}
+
+.notice.error {
+  background: rgba(204, 93, 57, 0.12);
+  color: #8a3a22;
+}
+
+.notice.warn {
+  background: rgba(204, 142, 57, 0.12);
+  color: #855515;
+}
+
+.notice.ok {
+  background: rgba(46, 146, 92, 0.12);
+  color: #1f6c43;
+}
+
+.progress-wrap {
+  width: min(320px, 100%);
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  height: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(90deg, #0f7d71, #48a698);
+  width: 0%;
+  transition: width 0.25s ease;
+}
+
+.results {
+  margin-top: 18px;
+  display: grid;
+  gap: 14px;
+}
+
+.result-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: var(--shadow);
+}
+
+.result-head {
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.result-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.block h3 {
+  margin: 0 0 8px;
+  font-size: 1rem;
+}
+
+.block p {
+  margin: 6px 0;
+}
+
+.block ul,
+.block ol {
+  margin: 6px 0;
+  padding-left: 18px;
+}
+
+pre {
+  margin: 10px 0 0;
+  border-radius: 12px;
+  background: #132c34;
+  color: #dbf2f6;
+  padding: 10px;
+  overflow: auto;
+  font-size: 0.8rem;
+}
+
+details {
+  margin-top: 10px;
+}
+
+code {
+  font-family: "IBM Plex Mono", monospace;
+}
+
+@media (max-width: 900px) {
+  .result-grid {
+    grid-template-columns: 1fr;
+  }
+}

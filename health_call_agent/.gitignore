@@ -1,0 +1,15 @@
+__pycache__/
+.Python
+build/
+downloads/
+wheels/
+.env
+.venv
+env/
+venv/
+venv.bak/
+.DS_Store
+*.log
+data/*.json
+!data/sample_calls.json
+.streamlit/secrets.toml

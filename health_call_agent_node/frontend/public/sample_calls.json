@@ -1,0 +1,53 @@
+[
+  {
+    "call_id": "call_001",
+    "date": "2025-02-10",
+    "duration_seconds": 180,
+    "participants": ["agent", "customer"],
+    "conversation": [
+      {"role": "agent", "content": "Hello, thank you for calling HealthCare Plus. How may I help you today?"},
+      {"role": "customer", "content": "I want to book an appointment with Dr. Sharma for next week."},
+      {"role": "agent", "content": "Sure, let me check availability. Could you provide your name and date of birth?"},
+      {"role": "customer", "content": "My name is Rahul Kumar."},
+      {"role": "agent", "content": "And your date of birth?"},
+      {"role": "customer", "content": "15th March 1990."},
+      {"role": "agent", "content": "Thank you. I see we have slots on Tuesday 2 PM and Thursday 10 AM. Which do you prefer?"},
+      {"role": "customer", "content": "Thursday 10 AM works."},
+      {"role": "agent", "content": "I'm sorry, our system is down at the moment. Could you please call back in an hour? We'll try to book it then."},
+      {"role": "customer", "content": "Okay, I'll call back."}
+    ]
+  },
+  {
+    "call_id": "call_002",
+    "date": "2025-02-11",
+    "duration_seconds": 240,
+    "participants": ["vendor", "customer"],
+    "conversation": [
+      {"role": "vendor", "content": "Hi, this is from Wellness Solutions. You had shown interest in our annual health checkup package."},
+      {"role": "customer", "content": "Yes, I was interested. What's the price?"},
+      {"role": "vendor", "content": "The package is 4999 rupees and includes 25 tests. Would you like to proceed?"},
+      {"role": "customer", "content": "That sounds good. How do I pay?"},
+      {"role": "vendor", "content": "We accept UPI and card. I can send you a payment link."},
+      {"role": "customer", "content": "Send the link to my email please."},
+      {"role": "vendor", "content": "I don't have access to send emails from here. You need to visit our website and enter your details to get the link."},
+      {"role": "customer", "content": "I don't have time for that right now. I'll do it later."},
+      {"role": "vendor", "content": "Sure, feel free to reach out when ready."}
+    ]
+  },
+  {
+    "call_id": "call_003",
+    "date": "2025-02-12",
+    "duration_seconds": 300,
+    "participants": ["agent", "customer"],
+    "conversation": [
+      {"role": "agent", "content": "Good morning, Medical Helpline. How can I assist you?"},
+      {"role": "customer", "content": "I need to speak with a doctor about my recurring headache and dizziness."},
+      {"role": "agent", "content": "I'll connect you to our consultant. Please hold."},
+      {"role": "agent", "content": "I'm sorry, all our consultants are busy. The wait time is about 45 minutes. Would you like to wait or get a callback?"},
+      {"role": "customer", "content": "I need advice soon. Can I get a callback in 30 minutes?"},
+      {"role": "agent", "content": "We only do callbacks within 2 hours. I can put you in queue for a callback."},
+      {"role": "customer", "content": "That's too long. I'll try another service. Thanks."},
+      {"role": "agent", "content": "I understand. Thank you for calling."}
+    ]
+  }
+]

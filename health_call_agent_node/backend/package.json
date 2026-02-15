@@ -1,0 +1,23 @@
+{
+  "name": "health-call-agent-node-backend",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Node.js FastAPI replica for health call analysis using LangGraph.js + Gemini",
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev": "node --watch src/main.js",
+    "start": "node src/main.js"
+  },
+  "dependencies": {
+    "@langchain/core": "latest",
+    "@langchain/google-genai": "latest",
+    "@langchain/langgraph": "^1.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "zod": "^4.1.11"
+  }
+}
