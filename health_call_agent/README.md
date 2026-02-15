@@ -1,6 +1,6 @@
 # Health Call Agent
 
-Analyzes call logs (agent/vendor ↔ customer conversations) to identify **what the purpose of the call was** (e.g. booking, sell, consultant) and **why that purpose was not achieved**.
+Analyzes call logs (agent/vendor ↔ customer conversations) to identify **what the purpose of the call was** (e.g. booking, sell, consultant) and **why that purpose was not achieved** and **Actionable Plan**.
 
 - **Backend:** FastAPI + LangGraph + Gemini (free tier)
 - **Frontend:** Streamlit
