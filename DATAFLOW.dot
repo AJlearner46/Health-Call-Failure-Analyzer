@@ -1,121 +1,194 @@
 digraph HealthCallAgentDataflow {
     rankdir=LR;
     bgcolor=white;
-    node [shape=box, style=filled, fontname="Arial", fontsize=11];
-    edge [fontname="Arial", fontsize=10];
+    node [shape=box, style=filled, fontname="Arial", fontsize=10];
+    edge [fontname="Arial", fontsize=9];
+    nodesep=1.2;
+    ranksep=2.0;
 
     // ============================================================================
-    // LAYER 1: INPUT DATA
+    // LAYER 1: DATA SOURCE
     // ============================================================================
-    subgraph cluster_input {
-        label="INPUT: Failed Call Data\n(JSON)";
+    subgraph cluster_datasource {
+        label="LAYER 1: Data Source\n(Database)";
         style=filled;
         fillcolor="#E8F4F8";
         
-        INPUT [label="Call Conversation (JSON)\n\nagent: \"Hello, how can I help?\"\ncustomer: \"I want to book appointment\"\nagent: \"I'm sorry, system is down\"\n\n❌ Purpose NOT Achieved", shape=box, fillcolor="#4A90E2"];
+        DB [label="Clinic Database\n\nCall Records:\n• Conversation JSON\n  (patient ↔ AI agent)\n• Custom API Calls\n  (EMR lookups, bookings)\n• Timestamps\n• Call Status", shape=cylinder, fillcolor="#4A90E2"];
     }
 
     // ============================================================================
-    // LAYER 2: AGENT 1 - IDENTIFY PURPOSE
+    // LAYER 2: SCHEDULER & FILTERS
     // ============================================================================
-    subgraph cluster_agent1 {
-        label="AGENT 1: Identify Call Purpose\n(with AI Prompt)";
+    subgraph cluster_scheduler {
+        label="LAYER 2: Daily Cronjob Scheduler\n(end of day: 11:59 PM)";
         style=filled;
         fillcolor="#FFF8E8";
         
-        AGENT1 [label="Agent 1 Analyzes:\n\nPrompt: \"What was the customer\ntrying to achieve?\"\n\n📌 Output 1:\n• Purpose: booking\n• Confidence: high\n• Summary: Customer wanted\n  to schedule appointment", shape=box, fillcolor="#FFD700"];
+        CRONJOB [label="Cronjob Trigger\n\nTime: Daily 23:59\nAction: Run analysis", shape=box, fillcolor="#FFD700"];
+        
+        FILTER [label="Filter Calls with Issues\n\nCriteria:\n• Call purpose NOT achieved\n• Errors in API calls\n• Customer dissatisfaction\n• System failures\n\n⬇️ Extract problematic calls only", shape=box, fillcolor="#FFA500"];
     }
 
     // ============================================================================
-    // LAYER 3: AGENT 2 - ANALYZE FAILURE
+    // LAYER 3: BATCH PROCESSING
     // ============================================================================
+    subgraph cluster_batch {
+        label="LAYER 3: Batch Processing\n(Group of 10 calls)";
+        style=filled;
+        fillcolor="#F5F5F5";
+        
+        BATCH [label="Batch Generator\n\nGroup filtered calls:\n• Batch Size: 10 calls\n• Total calls filtered: N\n• Batches created: ⌈N/10⌉\n\nExample:\n165 filtered calls → 17 batches", shape=box, fillcolor="#D3D3D3"];
+        
+        QUEUE [label="Queue Management\n\n✓ Each batch queued\n✓ Priority: FIFO\n✓ Retry on failure\n✓ Error tracking", shape=box, fillcolor="#A9A9A9"];
+    }
+
+    // ============================================================================
+    // LAYER 4: AGENT WORKFLOW
+    // ============================================================================
+    
+    // Agent 1
+    subgraph cluster_agent1 {
+        label="AGENT 1: Identify Call Purpose\n(AI-powered with Prompt)";
+        style=filled;
+        fillcolor="#FFF8E8";
+        
+        AGENT1 [label="Processes Batch of 10 Calls\n\nFor each call:\nPrompt: \"What was the patient\ntrying to achieve?\"\n\n📌 Output 1 (per call):\n• Purpose: appointment_booking\n• Confidence: high\n• Summary: Details", shape=box, fillcolor="#FFD700"];
+    }
+
+    // Agent 2
     subgraph cluster_agent2 {
-        label="AGENT 2: Analyze Why Purpose Failed\n(with AI Prompt)";
+        label="AGENT 2: Analyze Failure Causes\n(AI-powered with Prompt)";
         style=filled;
         fillcolor="#FFE8F8";
         
-        AGENT2_PROCESS [label="Agent 2 Receives:\n• Output 1 (Purpose)\n• Full conversation JSON\n\nAnalyzes BOTH:", shape=box, fillcolor="#FF9999"];
+        AGENT2A [label="Agent 2 Receives (for each call):\n• Output 1: Purpose\n• Full conversation JSON\n• Custom API calls & responses\n\nAnalyzes BOTH factors:", shape=box, fillcolor="#FF9999"];
         
-        AGENT2_BUSINESS [label="🏢 BUSINESS/OPERATIONAL\nFailures:\n\n• System downtime\n• Process limitation\n• Long wait times\n• Policy issues\n• Missing information", shape=box, fillcolor="#FFB3B3"];
+        AGENT2B [label="🏢 BUSINESS/OPERATIONAL ISSUES:\n\n• System downtime\n• Database query failed\n• EMR API timeout\n• No available slots\n• Policy restrictions\n• Missing patient data", shape=box, fillcolor="#FFB3B3"];
         
-        AGENT2_AGENT [label="🤖 AGENTIC WORKFLOW\nFailures:\n\n• Agent misinterpretation\n• Wrong prompt response\n• Logic error in workflow\n• Model hallucination\n• Node failure or timeout", shape=box, fillcolor="#FF6B6B"];
+        AGENT2C [label="🤖 AGENTIC WORKFLOW ISSUES:\n\n• Agent misinterpretation\n• Wrong API called\n• Logic error in workflow\n• Model hallucination\n• Node failure/timeout\n• Incorrect slot booking", shape=box, fillcolor="#FF6B6B"];
         
-        OUTPUT2 [label="📊 Output 2:\n\n⚠️  Failure Category:\nBoth business AND agentic issues\n\n✓ If agentic issues found:\n  → Tag for Agent 3", shape=box, fillcolor="#FFC0CB"];
+        AGENT2_OUT [label="⚠️  Output 2 (per call):\n\nFailure Analysis:\n• Operational issues: [...]  \n• Agentic issues: [...]\n• Root cause (tagged)\n• Agentic issue flag: YES/NO", shape=box, fillcolor="#FFC0CB"];
     }
 
-    // ============================================================================
-    // LAYER 4: AGENT 3 - FIX AGENTIC WORKFLOW
-    // ============================================================================
+    // Decision Logic
+    subgraph cluster_logic {
+        label="Routing Logic";
+        style=filled;
+        fillcolor="#F5F5F5";
+        
+        DECISION [label="Check:\nAgentic issues present?", shape=diamond, fillcolor="#FFFFCC"];
+    }
+
+    // Agent 3
     subgraph cluster_agent3 {
         label="AGENT 3: Suggest Workflow Improvements\n(ONLY if agentic issues found)";
         style=filled;
         fillcolor="#E8FFE8";
         
-        AGENT3 [label="Agent 3 Analyzes:\n\n\"How can we improve\nthe agent workflow?\"\n\n✅ Output 3:\n\n• Issue identified\n• Root cause analysis\n• Suggested fixes\n• New workflow steps\n• Improved prompt\n• Or: Process redesign", shape=box, fillcolor="#50C878"];
+        AGENT3 [label="For calls with agentic issues:\n\nPrompt: \"How can we improve\nthe agent workflow?\"\n\n✅ Output 3 (conditional):\n• Issue identified\n• Root cause analysis\n• Suggested fixes\n• New workflow steps\n• Improved prompt\n• API call corrections", shape=box, fillcolor="#50C878"];
     }
 
     // ============================================================================
-    // LAYER 5: DASHBOARD & INSIGHTS
+    // LAYER 5: RESPONSE FORMATTER
     // ============================================================================
-    subgraph cluster_dashboard {
-        label="DASHBOARD: Combined Results";
+    subgraph cluster_response {
+        label="LAYER 5: Generic Response Formatter\n(Enterprise-grade)";
         style=filled;
         fillcolor="#F0F0F0";
         
-        DASHBOARD [label="📊 All Call Data:\n\n✓ Output 1: Call Purpose\n✓ Output 2: Failure Analysis\n  - Business issues\n  - Agentic issues\n✓ Output 3: Improvement Actions\n  (if agentic issues exist)\n\n🎯 Action Items:\n• Fix business process\n• Improve agent workflow\n• Retrain models if needed", shape=box, fillcolor="#FFFFFF", style="filled,bold"];
+        FORMATTER [label="Response Builder\n\nCombine all outputs into\ngeneric JSON format", shape=box, fillcolor="#D3D3D3"];
     }
 
     // ============================================================================
-    // WORKFLOW CONTROL PATHS
+    // LAYER 6: OUTPUT
     // ============================================================================
-    subgraph cluster_control {
-        label="Workflow Logic";
+    subgraph cluster_output {
+        label="LAYER 6: Output - Generic Response JSON";
+        style=filled;
+        fillcolor="#E8FFE8";
+        
+        OUTPUT [label="Generic JSON Response\n(handles all agent types)\n\n{\n  \"responseType\": \"call_analysis\",\n  \"batchId\": \"batch_20260217_001\",\n  \"callsAnalyzed\": 10,\n  \"analysisResults\": [\n    {\n      \"callId\": \"call_001\",\n      \"conversationJson\": {...},\n      \"apiCalls\": [...],\n      \"output1_purpose\": {\n        \"purpose\": \"appointment_booking\",\n        \"confidence\": \"high\",\n        \"summary\": \"...\"\n      },\n      \"output2_failureAnalysis\": {\n        \"operationalIssues\": [...],\n        \"agenticIssues\": [...],\n        \"hasAgenticIssues\": true\n      },\n      \"output3_improvements\": {\n        \"issue\": \"...\",\n        \"fixes\": [...],\n        \"newWorkflow\": [...]\n      }\n    },\n    ...(9 more calls)\n  ]\n}\n\n✨ Future-proof:\n• Extensible for new agent types\n• Different responseType values\n• Backward compatible", shape=box, fillcolor="#50C878"];
+    }
+
+    // ============================================================================
+    // LAYER 7: DASHBOARD & STORAGE
+    // ============================================================================
+    subgraph cluster_dashboard {
+        label="LAYER 7: Dashboard & Storage\n(for review & action)";
         style=filled;
         fillcolor="#F5F5F5";
         
-        LOGIC1 [label="Agent 2 checks:\nAre there agentic\nworkflow issues?", shape=diamond, fillcolor="#FFFFCC"];
-        LOGIC2 [label="YES: Pass to Agent 3\nNO: Skip Agent 3", shape=note, fillcolor="lightyellow"];
+        DASHBOARD [label="Dashboard Display\n\n✓ Batch summary\n✓ Per-call analysis\n✓ Operational issues\n✓ Agentic issues\n✓ Recommended fixes\n✓ Historical trends", shape=box, fillcolor="#D3D3D3"];
+        
+        STORAGE [label="Archive Results\n\n✓ Store response JSON\n✓ Track improvements\n✓ Audit trail\n✓ Analytics", shape=cylinder, fillcolor="#A9A9A9"];
     }
 
     // ============================================================================
-    // DATA FLOW ARROWS
+    // DATA FLOWS
     // ============================================================================
     
-    // Input to Agent 1
-    INPUT -> AGENT1 [label="JSON", color="blue", penwidth=2];
+    // Data source to scheduler
+    DB -> CRONJOB [label="Daily trigger", color="blue", penwidth=2];
     
-    // Agent 1 to Agent 2
-    AGENT1 -> AGENT2_PROCESS [label="Output 1 +\nfull conversation", color="blue", penwidth=2];
+    // Scheduler to filter
+    CRONJOB -> FILTER [label="Execute", color="blue", penwidth=2];
     
-    // Agent 2 analysis branches
-    AGENT2_PROCESS -> AGENT2_BUSINESS [label="Detect", color="orange"];
-    AGENT2_PROCESS -> AGENT2_AGENT [label="Detect", color="red"];
+    // Filter to batch
+    FILTER -> BATCH [label="Filtered calls\n(with issues only)", color="blue", penwidth=2];
     
-    AGENT2_BUSINESS -> OUTPUT2;
-    AGENT2_AGENT -> OUTPUT2;
+    // Batch processing
+    BATCH -> QUEUE [label="Create batches", color="blue"];
+    QUEUE -> AGENT1 [label="Batch of 10 calls\n(as JSON)", color="blue", penwidth=2];
     
-    // Agent 2 to Logic Check
-    OUTPUT2 -> LOGIC1 [label="Output 2", color="blue", penwidth=2];
-    LOGIC1 -> LOGIC2 [label="decision"];
+    // Agent workflow
+    AGENT1 -> AGENT2A [label="Output 1 +\nfull data", color="blue", penwidth=2];
     
-    // Conditional flow to Agent 3
-    LOGIC2 -> AGENT3 [label="IF agentic issues\n→ Agent 3", color="red", penwidth=2, style=dashed];
-    LOGIC2 -> DASHBOARD [label="IF no agentic issues\n→ Dashboard", color="green", penwidth=2, style=dashed];
+    AGENT2A -> AGENT2B [label="Analyze", color="orange"];
+    AGENT2A -> AGENT2C [label="Analyze", color="red"];
     
-    // Agent 3 to Dashboard
-    AGENT3 -> DASHBOARD [label="Output 3:\nImprovements", color="green", penwidth=2];
+    AGENT2B -> AGENT2_OUT;
+    AGENT2C -> AGENT2_OUT;
+    
+    AGENT2_OUT -> DECISION [label="Output 2", color="blue", penwidth=2];
+    
+    // Conditional routing
+    DECISION -> AGENT3 [label="YES: agentic issues\nfound", color="red", penwidth=2, style=dashed];
+    DECISION -> FORMATTER [label="NO: only operational\nissues", color="green", penwidth=2, style=dashed];
+    
+    // Agent 3 to formatter
+    AGENT3 -> FORMATTER [label="Output 3", color="green", penwidth=2];
+    
+    // Formatter to output
+    FORMATTER -> OUTPUT [label="Build generic JSON", color="blue", penwidth=2];
+    
+    // Output to dashboard
+    OUTPUT -> DASHBOARD [label="Display results", color="green", penwidth=2];
+    OUTPUT -> STORAGE [label="Archive", color="green", penwidth=2];
 
     // ============================================================================
-    // KEY METRICS
+    // CALL JSON STRUCTURE (INFO BOX)
+    // ============================================================================
+    subgraph cluster_call_json {
+        label="Call JSON Structure\n(from database)";
+        style=filled;
+        fillcolor="#FFFACD";
+        
+        CALL_STRUCTURE [label="{\n  \"callId\": \"call_001\",\n  \"timestamp\": \"2026-02-17T14:30:00Z\",\n  \"patientId\": \"pat_001\",\n  \"conversation\": [\n    {\"role\": \"patient\", \"content\": \"...\"},\n    {\"role\": \"agent\", \"content\": \"...\"}\n  ],\n  \"customApiCalls\": [\n    {\n      \"name\": \"searchPatient\",\n      \"params\": {...},\n      \"response\": {...}\n    },\n    {\n      \"name\": \"findSlots\",\n      \"params\": {...},\n      \"response\": {...}\n    },\n    {\n      \"name\": \"bookAppointment\",\n      \"status\": \"failed\",\n      \"error\": \"No slots available\"\n    }\n  ]\n}", shape=box, fillcolor="white"];
+    }
+
+    // ============================================================================
+    // KEY METRICS & SLA
     // ============================================================================
     subgraph cluster_metrics {
-        //label="Performance";
-        //style=filled;
-        //fillcolor="#F0F0F0";
+        label="Performance & SLA";
+        style=filled;
+        fillcolor="#F5F5F5";
         
-        //M1 [label="⏱️ Total: 6-9 seconds per call", shape=note, fillcolor="lightyellow"];
-        //M2 [label="💰 Cost: Free tier available", shape=note, fillcolor="lightyellow"];
-        //M3 [label="📊 Capacity: ~150 calls/minute", shape=note, fillcolor="lightyellow"];
+        M1 [label="⏱️ Processing: ~10-15 min/batch", shape=note, fillcolor="lightyellow"];
+        M2 [label="📊 Batch Size: 10 calls/batch", shape=note, fillcolor="lightyellow"];
+        M3 [label="🔄 Frequency: Daily (23:59 PM)", shape=note, fillcolor="lightyellow"];
+        M4 [label="💾 Retention: Results archived for audit", shape=note, fillcolor="lightyellow"];
     }
 
 }

@@ -1,0 +1,466 @@
+<svg width="1419pt" height="3155pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events" style="overflow: hidden; "><g id="viewport-20260216201549037" class="svg-pan-zoom_viewport" transform="matrix(0.7738125960618888,0,0,0.7738125960618888,251.38051447273978,-74.96908916251934)" style="transform: matrix(0.773813, 0, 0, 0.773813, 251.381, -74.9691);">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 3151.02)">
+<title>HealthCallAgentDataflow</title>
+<polygon fill="white" stroke="none" points="-4,4 -4,-3151.02 1415,-3151.02 1415,4 -4,4"></polygon>
+<g id="clust1" class="cluster">
+<title>cluster_datasource</title>
+<polygon fill="#e8f4f8" stroke="black" points="211,-2818.79 211,-3050.46 371,-3050.46 371,-2818.79 211,-2818.79"></polygon>
+<text text-anchor="middle" x="291" y="-3033.86" font-family="Times,serif" font-size="14.00">LAYER 1: Data Source</text>
+<text text-anchor="middle" x="291" y="-3017.06" font-family="Times,serif" font-size="14.00">(Database)</text>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_scheduler</title>
+<polygon fill="#fff8e8" stroke="black" points="181,-2407.62 181,-2700.22 401,-2700.22 401,-2407.62 181,-2407.62"></polygon>
+<text text-anchor="middle" x="291" y="-2683.62" font-family="Times,serif" font-size="14.00">LAYER 2: Daily Cronjob Scheduler</text>
+<text text-anchor="middle" x="291" y="-2666.82" font-family="Times,serif" font-size="14.00">(end of day: 11:59 PM)</text>
+</g>
+<g id="clust3" class="cluster">
+<title>cluster_batch</title>
+<polygon fill="#f5f5f5" stroke="black" points="201,-2046.62 201,-2365.62 381,-2365.62 381,-2046.62 201,-2046.62"></polygon>
+<text text-anchor="middle" x="291" y="-2349.03" font-family="Times,serif" font-size="14.00">LAYER 3: Batch Processing</text>
+<text text-anchor="middle" x="291" y="-2332.22" font-family="Times,serif" font-size="14.00">(Group of 10 calls)</text>
+</g>
+<g id="clust4" class="cluster">
+<title>cluster_agent1</title>
+<polygon fill="#fff8e8" stroke="black" points="191,-1807.42 191,-2004.62 392,-2004.62 392,-1807.42 191,-1807.42"></polygon>
+<text text-anchor="middle" x="291.5" y="-1988.02" font-family="Times,serif" font-size="14.00">AGENT 1: Identify Call Purpose</text>
+<text text-anchor="middle" x="291.5" y="-1971.22" font-family="Times,serif" font-size="14.00">(AI-powered with Prompt)</text>
+</g>
+<g id="clust5" class="cluster">
+<title>cluster_agent2</title>
+<polygon fill="#ffe8f8" stroke="black" points="65,-1322.22 65,-1765.42 509,-1765.42 509,-1322.22 65,-1322.22"></polygon>
+<text text-anchor="middle" x="287" y="-1748.82" font-family="Times,serif" font-size="14.00">AGENT 2: Analyze Failure Causes</text>
+<text text-anchor="middle" x="287" y="-1732.02" font-family="Times,serif" font-size="14.00">(AI-powered with Prompt)</text>
+</g>
+<g id="clust6" class="cluster">
+<title>cluster_logic</title>
+<polygon fill="#f5f5f5" stroke="black" points="113,-1182.62 113,-1292.22 395,-1292.22 395,-1182.62 113,-1182.62"></polygon>
+<text text-anchor="middle" x="254" y="-1275.62" font-family="Times,serif" font-size="14.00">Routing Logic</text>
+</g>
+<g id="clust7" class="cluster">
+<title>cluster_agent3</title>
+<polygon fill="#e8ffe8" stroke="black" points="8,-917.02 8,-1140.62 279,-1140.62 279,-917.02 8,-917.02"></polygon>
+<text text-anchor="middle" x="143.5" y="-1124.02" font-family="Times,serif" font-size="14.00">AGENT 3: Suggest Workflow Improvements</text>
+<text text-anchor="middle" x="143.5" y="-1107.22" font-family="Times,serif" font-size="14.00">(ONLY if agentic issues found)</text>
+</g>
+<g id="clust8" class="cluster">
+<title>cluster_response</title>
+<polygon fill="#f0f0f0" stroke="black" points="150,-768.82 150,-887.02 390,-887.02 390,-768.82 150,-768.82"></polygon>
+<text text-anchor="middle" x="270" y="-870.42" font-family="Times,serif" font-size="14.00">LAYER 5: Generic Response Formatter</text>
+<text text-anchor="middle" x="270" y="-853.62" font-family="Times,serif" font-size="14.00">(Enterprise-grade)</text>
+</g>
+<g id="clust9" class="cluster">
+<title>cluster_output</title>
+<polygon fill="#e8ffe8" stroke="black" points="136,-215.23 136,-738.82 405,-738.82 405,-215.23 136,-215.23"></polygon>
+<text text-anchor="middle" x="270.5" y="-722.22" font-family="Times,serif" font-size="14.00">LAYER 6: Output - Generic Response JSON</text>
+</g>
+<g id="clust10" class="cluster">
+<title>cluster_dashboard</title>
+<polygon fill="#f5f5f5" stroke="black" points="115,-8 115,-185.22 413,-185.22 413,-8 115,-8"></polygon>
+<text text-anchor="middle" x="264" y="-168.62" font-family="Times,serif" font-size="14.00">LAYER 7: Dashboard &amp; Storage</text>
+<text text-anchor="middle" x="264" y="-151.82" font-family="Times,serif" font-size="14.00">(for review &amp; action)</text>
+</g>
+<g id="clust11" class="cluster">
+<title>cluster_call_json</title>
+<polygon fill="#fffacd" stroke="black" points="379,-2730.22 379,-3139.02 605,-3139.02 605,-2730.22 379,-2730.22"></polygon>
+<text text-anchor="middle" x="492" y="-3122.42" font-family="Times,serif" font-size="14.00">Call JSON Structure</text>
+<text text-anchor="middle" x="492" y="-3105.62" font-family="Times,serif" font-size="14.00">(from database)</text>
+</g>
+<g id="clust12" class="cluster">
+<title>cluster_metrics</title>
+<polygon fill="#f5f5f5" stroke="black" points="613,-2887.82 613,-2964.62 1403,-2964.62 1403,-2887.82 613,-2887.82"></polygon>
+<text text-anchor="middle" x="1008" y="-2948.03" font-family="Times,serif" font-size="14.00">Performance &amp; SLA</text>
+</g>
+<!-- DB -->
+<g id="node1" class="node">
+<title>DB</title>
+<path fill="#4a90e2" stroke="black" d="M363.5,-2985.04C363.5,-2993.77 331,-3000.86 291,-3000.86 251,-3000.86 218.5,-2993.77 218.5,-2985.04 218.5,-2985.04 218.5,-2842.61 218.5,-2842.61 218.5,-2833.88 251,-2826.79 291,-2826.79 331,-2826.79 363.5,-2833.88 363.5,-2842.61 363.5,-2842.61 363.5,-2985.04 363.5,-2985.04"></path>
+<path fill="none" stroke="black" d="M363.5,-2985.04C363.5,-2976.31 331,-2969.21 291,-2969.21 251,-2969.21 218.5,-2976.31 218.5,-2985.04"></path>
+<text text-anchor="middle" x="291" y="-2963.22" font-family="Arial" font-size="11.00">Clinic Database</text>
+<text text-anchor="middle" x="291" y="-2937.03" font-family="Arial" font-size="11.00">Call Records:</text>
+<text text-anchor="middle" x="291" y="-2923.83" font-family="Arial" font-size="11.00">• Conversation JSON</text>
+<text text-anchor="middle" x="291" y="-2910.63" font-family="Arial" font-size="11.00"> &#160;(patient ↔ AI agent)</text>
+<text text-anchor="middle" x="291" y="-2897.43" font-family="Arial" font-size="11.00">• Custom API Calls</text>
+<text text-anchor="middle" x="291" y="-2884.23" font-family="Arial" font-size="11.00"> &#160;(EMR lookups, bookings)</text>
+<text text-anchor="middle" x="291" y="-2871.03" font-family="Arial" font-size="11.00">• Timestamps</text>
+<text text-anchor="middle" x="291" y="-2857.83" font-family="Arial" font-size="11.00">• Call Status</text>
+</g>
+<!-- CRONJOB -->
+<g id="node2" class="node">
+<title>CRONJOB</title>
+<polygon fill="#ffd700" stroke="black" points="348.83,-2650.62 233.17,-2650.62 233.17,-2590.02 348.83,-2590.02 348.83,-2650.62"></polygon>
+<text text-anchor="middle" x="291" y="-2636.72" font-family="Arial" font-size="11.00">Cronjob Trigger</text>
+<text text-anchor="middle" x="291" y="-2610.53" font-family="Arial" font-size="11.00">Time: Daily 23:59</text>
+<text text-anchor="middle" x="291" y="-2597.33" font-family="Arial" font-size="11.00">Action: Run analysis</text>
+</g>
+<!-- DB&#45;&gt;CRONJOB -->
+<g id="edge1" class="edge">
+<title>DB-&gt;CRONJOB</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M291,-2826.55C291,-2772.92 291,-2706.33 291,-2663.82"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="294.5,-2663.94 291,-2653.94 287.5,-2663.94 294.5,-2663.94"></polygon>
+<text text-anchor="middle" x="317.67" y="-2711.22" font-family="Arial" font-size="10.00">Daily trigger</text>
+</g>
+<!-- FILTER -->
+<g id="node3" class="node">
+<title>FILTER</title>
+<polygon fill="#ffa500" stroke="black" points="380.92,-2542.02 201.08,-2542.02 201.08,-2415.62 380.92,-2415.62 380.92,-2542.02"></polygon>
+<text text-anchor="middle" x="291" y="-2528.12" font-family="Arial" font-size="11.00">Filter Calls with Issues</text>
+<text text-anchor="middle" x="291" y="-2501.92" font-family="Arial" font-size="11.00">Criteria:</text>
+<text text-anchor="middle" x="291" y="-2488.72" font-family="Arial" font-size="11.00">• Call purpose NOT achieved</text>
+<text text-anchor="middle" x="291" y="-2475.53" font-family="Arial" font-size="11.00">• Errors in API calls</text>
+<text text-anchor="middle" x="291" y="-2462.33" font-family="Arial" font-size="11.00">• Customer dissatisfaction</text>
+<text text-anchor="middle" x="291" y="-2449.13" font-family="Arial" font-size="11.00">• System failures</text>
+<text text-anchor="middle" x="291" y="-2422.93" font-family="Arial" font-size="11.00">⬇️ Extract problematic calls only</text>
+</g>
+<!-- CRONJOB&#45;&gt;FILTER -->
+<g id="edge2" class="edge">
+<title>CRONJOB-&gt;FILTER</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M291,-2589.74C291,-2579.47 291,-2567.44 291,-2555.18"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="294.5,-2555.4 291,-2545.4 287.5,-2555.4 294.5,-2555.4"></polygon>
+<text text-anchor="middle" x="309.07" y="-2563.02" font-family="Arial" font-size="10.00">Execute</text>
+</g>
+<!-- BATCH -->
+<g id="node4" class="node">
+<title>BATCH</title>
+<polygon fill="#d3d3d3" stroke="black" points="373.29,-2316.02 208.71,-2316.02 208.71,-2189.62 373.29,-2189.62 373.29,-2316.02"></polygon>
+<text text-anchor="middle" x="291" y="-2302.12" font-family="Arial" font-size="11.00">Batch Generator</text>
+<text text-anchor="middle" x="291" y="-2275.92" font-family="Arial" font-size="11.00">Group filtered calls:</text>
+<text text-anchor="middle" x="291" y="-2262.72" font-family="Arial" font-size="11.00">• Batch Size: 10 calls</text>
+<text text-anchor="middle" x="291" y="-2249.53" font-family="Arial" font-size="11.00">• Total calls filtered: N</text>
+<text text-anchor="middle" x="291" y="-2236.33" font-family="Arial" font-size="11.00">• Batches created: ⌈N/10⌉</text>
+<text text-anchor="middle" x="291" y="-2210.13" font-family="Arial" font-size="11.00">Example:</text>
+<text text-anchor="middle" x="291" y="-2196.93" font-family="Arial" font-size="11.00">165 filtered calls → 17 batches</text>
+</g>
+<!-- FILTER&#45;&gt;BATCH -->
+<g id="edge3" class="edge">
+<title>FILTER-&gt;BATCH</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M291,-2415.13C291,-2388.54 291,-2357.31 291,-2329.45"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="294.5,-2329.53 291,-2319.53 287.5,-2329.53 294.5,-2329.53"></polygon>
+<text text-anchor="middle" x="329.34" y="-2388.62" font-family="Arial" font-size="10.00">Filtered calls</text>
+<text text-anchor="middle" x="329.34" y="-2376.62" font-family="Arial" font-size="10.00">(with issues only)</text>
+</g>
+<!-- QUEUE -->
+<g id="node5" class="node">
+<title>QUEUE</title>
+<polygon fill="#a9a9a9" stroke="black" points="352.51,-2141.62 229.49,-2141.62 229.49,-2054.62 352.51,-2054.62 352.51,-2141.62"></polygon>
+<text text-anchor="middle" x="291" y="-2127.72" font-family="Arial" font-size="11.00">Queue Management</text>
+<text text-anchor="middle" x="291" y="-2101.53" font-family="Arial" font-size="11.00">✓ Each batch queued</text>
+<text text-anchor="middle" x="291" y="-2088.33" font-family="Arial" font-size="11.00">✓ Priority: FIFO</text>
+<text text-anchor="middle" x="291" y="-2075.13" font-family="Arial" font-size="11.00">✓ Retry on failure</text>
+<text text-anchor="middle" x="291" y="-2061.93" font-family="Arial" font-size="11.00">✓ Error tracking</text>
+</g>
+<!-- BATCH&#45;&gt;QUEUE -->
+<g id="edge4" class="edge">
+<title>BATCH-&gt;QUEUE</title>
+<path fill="none" stroke="blue" d="M291,-2189.28C291,-2177.29 291,-2164.84 291,-2153.15"></path>
+<polygon fill="blue" stroke="blue" points="294.5,-2153.28 291,-2143.28 287.5,-2153.28 294.5,-2153.28"></polygon>
+<text text-anchor="middle" x="324.91" y="-2162.62" font-family="Arial" font-size="10.00">Create batches</text>
+</g>
+<!-- AGENT1 -->
+<g id="node6" class="node">
+<title>AGENT1</title>
+<polygon fill="#ffd700" stroke="black" points="381.25,-1955.02 200.75,-1955.02 200.75,-1815.42 381.25,-1815.42 381.25,-1955.02"></polygon>
+<text text-anchor="middle" x="291" y="-1941.12" font-family="Arial" font-size="11.00">Processes Batch of 10 Calls</text>
+<text text-anchor="middle" x="291" y="-1914.92" font-family="Arial" font-size="11.00">For each call:</text>
+<text text-anchor="middle" x="291" y="-1901.72" font-family="Arial" font-size="11.00">Prompt: "What was the patient</text>
+<text text-anchor="middle" x="291" y="-1888.52" font-family="Arial" font-size="11.00">trying to achieve?"</text>
+<text text-anchor="middle" x="291" y="-1862.32" font-family="Arial" font-size="11.00">📌 Output 1 (per call):</text>
+<text text-anchor="middle" x="291" y="-1849.12" font-family="Arial" font-size="11.00">• Purpose: appointment_booking</text>
+<text text-anchor="middle" x="291" y="-1835.92" font-family="Arial" font-size="11.00">• Confidence: high</text>
+<text text-anchor="middle" x="291" y="-1822.72" font-family="Arial" font-size="11.00">• Summary: Details</text>
+</g>
+<!-- QUEUE&#45;&gt;AGENT1 -->
+<g id="edge5" class="edge">
+<title>QUEUE-&gt;AGENT1</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M291,-2054.19C291,-2029.43 291,-1997.48 291,-1968.1"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="294.5,-1968.28 291,-1958.28 287.5,-1968.28 294.5,-1968.28"></polygon>
+<text text-anchor="middle" x="327.69" y="-2027.62" font-family="Arial" font-size="10.00">Batch of 10 calls</text>
+<text text-anchor="middle" x="327.69" y="-2015.62" font-family="Arial" font-size="10.00">(as JSON)</text>
+</g>
+<!-- AGENT2A -->
+<g id="node7" class="node">
+<title>AGENT2A</title>
+<polygon fill="#ff9999" stroke="black" points="379.09,-1715.82 202.91,-1715.82 202.91,-1628.82 379.09,-1628.82 379.09,-1715.82"></polygon>
+<text text-anchor="middle" x="291" y="-1701.92" font-family="Arial" font-size="11.00">Agent 2 Receives (for each call):</text>
+<text text-anchor="middle" x="291" y="-1688.72" font-family="Arial" font-size="11.00">• Output 1: Purpose</text>
+<text text-anchor="middle" x="291" y="-1675.52" font-family="Arial" font-size="11.00">• Full conversation JSON</text>
+<text text-anchor="middle" x="291" y="-1662.32" font-family="Arial" font-size="11.00">• Custom API calls &amp; responses</text>
+<text text-anchor="middle" x="291" y="-1636.12" font-family="Arial" font-size="11.00">Analyzes BOTH factors:</text>
+</g>
+<!-- AGENT1&#45;&gt;AGENT2A -->
+<g id="edge6" class="edge">
+<title>AGENT1-&gt;AGENT2A</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M291,-1815.17C291,-1787.22 291,-1755.37 291,-1728.95"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="294.5,-1729.09 291,-1719.09 287.5,-1729.09 294.5,-1729.09"></polygon>
+<text text-anchor="middle" x="314.49" y="-1788.42" font-family="Arial" font-size="10.00">Output 1 +</text>
+<text text-anchor="middle" x="314.49" y="-1776.42" font-family="Arial" font-size="10.00">full data</text>
+</g>
+<!-- AGENT2B -->
+<g id="node8" class="node">
+<title>AGENT2B</title>
+<polygon fill="#ffb3b3" stroke="black" points="287.33,-1580.82 72.67,-1580.82 72.67,-1467.42 287.33,-1467.42 287.33,-1580.82"></polygon>
+<text text-anchor="middle" x="180" y="-1566.92" font-family="Arial" font-size="11.00">🏢 BUSINESS/OPERATIONAL ISSUES:</text>
+<text text-anchor="middle" x="180" y="-1540.72" font-family="Arial" font-size="11.00">• System downtime</text>
+<text text-anchor="middle" x="180" y="-1527.52" font-family="Arial" font-size="11.00">• Database query failed</text>
+<text text-anchor="middle" x="180" y="-1514.32" font-family="Arial" font-size="11.00">• EMR API timeout</text>
+<text text-anchor="middle" x="180" y="-1501.12" font-family="Arial" font-size="11.00">• No available slots</text>
+<text text-anchor="middle" x="180" y="-1487.92" font-family="Arial" font-size="11.00">• Policy restrictions</text>
+<text text-anchor="middle" x="180" y="-1474.72" font-family="Arial" font-size="11.00">• Missing patient data</text>
+</g>
+<!-- AGENT2A&#45;&gt;AGENT2B -->
+<g id="edge7" class="edge">
+<title>AGENT2A-&gt;AGENT2B</title>
+<path fill="none" stroke="orange" d="M258.6,-1628.64C249.45,-1616.59 239.28,-1603.2 229.37,-1590.15"></path>
+<polygon fill="orange" stroke="orange" points="232.32,-1588.25 223.48,-1582.4 226.74,-1592.48 232.32,-1588.25"></polygon>
+<text text-anchor="middle" x="260.79" y="-1601.82" font-family="Arial" font-size="10.00">Analyze</text>
+</g>
+<!-- AGENT2C -->
+<g id="node9" class="node">
+<title>AGENT2C</title>
+<polygon fill="#ff6b6b" stroke="black" points="500.84,-1580.82 305.16,-1580.82 305.16,-1467.42 500.84,-1467.42 500.84,-1580.82"></polygon>
+<text text-anchor="middle" x="403" y="-1566.92" font-family="Arial" font-size="11.00">🤖 AGENTIC WORKFLOW ISSUES:</text>
+<text text-anchor="middle" x="403" y="-1540.72" font-family="Arial" font-size="11.00">• Agent misinterpretation</text>
+<text text-anchor="middle" x="403" y="-1527.52" font-family="Arial" font-size="11.00">• Wrong API called</text>
+<text text-anchor="middle" x="403" y="-1514.32" font-family="Arial" font-size="11.00">• Logic error in workflow</text>
+<text text-anchor="middle" x="403" y="-1501.12" font-family="Arial" font-size="11.00">• Model hallucination</text>
+<text text-anchor="middle" x="403" y="-1487.92" font-family="Arial" font-size="11.00">• Node failure/timeout</text>
+<text text-anchor="middle" x="403" y="-1474.72" font-family="Arial" font-size="11.00">• Incorrect slot booking</text>
+</g>
+<!-- AGENT2A&#45;&gt;AGENT2C -->
+<g id="edge8" class="edge">
+<title>AGENT2A-&gt;AGENT2C</title>
+<path fill="none" stroke="red" d="M323.7,-1628.64C332.93,-1616.59 343.19,-1603.2 353.19,-1590.15"></path>
+<polygon fill="red" stroke="red" points="355.82,-1592.46 359.13,-1582.39 350.27,-1588.2 355.82,-1592.46"></polygon>
+<text text-anchor="middle" x="361.79" y="-1601.82" font-family="Arial" font-size="10.00">Analyze</text>
+</g>
+<!-- AGENT2_OUT -->
+<g id="node10" class="node">
+<title>AGENT2_OUT</title>
+<polygon fill="#ffc0cb" stroke="black" points="335.06,-1430.42 172.94,-1430.42 172.94,-1330.22 335.06,-1330.22 335.06,-1430.42"></polygon>
+<text text-anchor="middle" x="254" y="-1416.52" font-family="Arial" font-size="11.00">⚠️ &#160;Output 2 (per call):</text>
+<text text-anchor="middle" x="254" y="-1390.32" font-family="Arial" font-size="11.00">Failure Analysis:</text>
+<text text-anchor="middle" x="254" y="-1377.12" font-family="Arial" font-size="11.00">• Operational issues: [...] &#160;</text>
+<text text-anchor="middle" x="254" y="-1363.92" font-family="Arial" font-size="11.00">• Agentic issues: [...]</text>
+<text text-anchor="middle" x="254" y="-1350.72" font-family="Arial" font-size="11.00">• Root cause (tagged)</text>
+<text text-anchor="middle" x="254" y="-1337.52" font-family="Arial" font-size="11.00">• Agentic issue flag: YES/NO</text>
+</g>
+<!-- AGENT2B&#45;&gt;AGENT2_OUT -->
+<g id="edge9" class="edge">
+<title>AGENT2B-&gt;AGENT2_OUT</title>
+<path fill="none" stroke="black" d="M209.25,-1467.08C213.78,-1458.4 218.47,-1449.41 223.03,-1440.66"></path>
+<polygon fill="black" stroke="black" points="226.1,-1442.36 227.62,-1431.88 219.89,-1439.12 226.1,-1442.36"></polygon>
+</g>
+<!-- AGENT2C&#45;&gt;AGENT2_OUT -->
+<g id="edge10" class="edge">
+<title>AGENT2C-&gt;AGENT2_OUT</title>
+<path fill="none" stroke="black" d="M344.11,-1467.08C334.2,-1457.65 323.9,-1447.84 313.96,-1438.38"></path>
+<polygon fill="black" stroke="black" points="316.46,-1435.94 306.8,-1431.58 311.64,-1441.01 316.46,-1435.94"></polygon>
+</g>
+<!-- DECISION -->
+<g id="node11" class="node">
+<title>DECISION</title>
+<polygon fill="#ffffcc" stroke="black" points="254,-1259.42 121.21,-1225.02 254,-1190.62 386.79,-1225.02 254,-1259.42"></polygon>
+<text text-anchor="middle" x="254" y="-1228.32" font-family="Arial" font-size="11.00">Check:</text>
+<text text-anchor="middle" x="254" y="-1215.12" font-family="Arial" font-size="11.00">Agentic issues present?</text>
+</g>
+<!-- AGENT2_OUT&#45;&gt;DECISION -->
+<g id="edge11" class="edge">
+<title>AGENT2_OUT-&gt;DECISION</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M254,-1329.98C254,-1311.61 254,-1290.84 254,-1272.72"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="257.5,-1272.8 254,-1262.8 250.5,-1272.8 257.5,-1272.8"></polygon>
+<text text-anchor="middle" x="273.18" y="-1303.22" font-family="Arial" font-size="10.00">Output 2</text>
+</g>
+<!-- AGENT3 -->
+<g id="node12" class="node">
+<title>AGENT3</title>
+<polygon fill="#50c878" stroke="black" points="269.78,-1091.02 106.22,-1091.02 106.22,-925.02 269.78,-925.02 269.78,-1091.02"></polygon>
+<text text-anchor="middle" x="188" y="-1077.12" font-family="Arial" font-size="11.00">For calls with agentic issues:</text>
+<text text-anchor="middle" x="188" y="-1050.92" font-family="Arial" font-size="11.00">Prompt: "How can we improve</text>
+<text text-anchor="middle" x="188" y="-1037.72" font-family="Arial" font-size="11.00">the agent workflow?"</text>
+<text text-anchor="middle" x="188" y="-1011.52" font-family="Arial" font-size="11.00">✅ Output 3 (conditional):</text>
+<text text-anchor="middle" x="188" y="-998.32" font-family="Arial" font-size="11.00">• Issue identified</text>
+<text text-anchor="middle" x="188" y="-985.12" font-family="Arial" font-size="11.00">• Root cause analysis</text>
+<text text-anchor="middle" x="188" y="-971.92" font-family="Arial" font-size="11.00">• Suggested fixes</text>
+<text text-anchor="middle" x="188" y="-958.72" font-family="Arial" font-size="11.00">• New workflow steps</text>
+<text text-anchor="middle" x="188" y="-945.52" font-family="Arial" font-size="11.00">• Improved prompt</text>
+<text text-anchor="middle" x="188" y="-932.32" font-family="Arial" font-size="11.00">• API call corrections</text>
+</g>
+<!-- DECISION&#45;&gt;AGENT3 -->
+<g id="edge12" class="edge">
+<title>DECISION-&gt;AGENT3</title>
+<path fill="none" stroke="red" stroke-width="2" stroke-dasharray="5,2" d="M221.96,-1198.55C214.54,-1191.01 207.52,-1182.19 203.06,-1172.62 193.25,-1151.58 188.15,-1127.37 185.77,-1104.14"></path>
+<polygon fill="red" stroke="red" stroke-width="2" points="189.27,-1104.05 184.96,-1094.38 182.3,-1104.63 189.27,-1104.05"></polygon>
+<text text-anchor="middle" x="248.47" y="-1163.62" font-family="Arial" font-size="10.00">YES: agentic issues</text>
+<text text-anchor="middle" x="248.47" y="-1151.62" font-family="Arial" font-size="10.00">found</text>
+</g>
+<!-- FORMATTER -->
+<g id="node13" class="node">
+<title>FORMATTER</title>
+<polygon fill="#d3d3d3" stroke="black" points="337.01,-837.42 202.99,-837.42 202.99,-776.82 337.01,-776.82 337.01,-837.42"></polygon>
+<text text-anchor="middle" x="270" y="-823.52" font-family="Arial" font-size="11.00">Response Builder</text>
+<text text-anchor="middle" x="270" y="-797.32" font-family="Arial" font-size="11.00">Combine all outputs into</text>
+<text text-anchor="middle" x="270" y="-784.12" font-family="Arial" font-size="11.00">generic JSON format</text>
+</g>
+<!-- DECISION&#45;&gt;FORMATTER -->
+<g id="edge13" class="edge">
+<title>DECISION-&gt;FORMATTER</title>
+<path fill="none" stroke="green" stroke-width="2" stroke-dasharray="5,2" d="M279.05,-1196.77C284.35,-1189.44 289.19,-1181.16 292,-1172.62 295.34,-1162.49 292.21,-1159.29 292,-1148.62 290,-1045.63 291.11,-1019.72 283,-917.02 281.26,-895.02 278.43,-870.61 275.86,-850.49"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="279.33,-850.1 274.56,-840.64 272.39,-851.01 279.33,-850.1"></polygon>
+<text text-anchor="middle" x="337.58" y="-1011.02" font-family="Arial" font-size="10.00">NO: only operational</text>
+<text text-anchor="middle" x="337.58" y="-999.02" font-family="Arial" font-size="10.00">issues</text>
+</g>
+<!-- AGENT3&#45;&gt;FORMATTER -->
+<g id="edge14" class="edge">
+<title>AGENT3-&gt;FORMATTER</title>
+<path fill="none" stroke="green" stroke-width="2" d="M221.94,-924.69C232.6,-898.84 243.91,-871.4 252.88,-849.64"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="256.01,-851.24 256.59,-840.66 249.54,-848.57 256.01,-851.24"></polygon>
+<text text-anchor="middle" x="253.18" y="-898.02" font-family="Arial" font-size="10.00">Output 3</text>
+</g>
+<!-- OUTPUT -->
+<g id="node14" class="node">
+<title>OUTPUT</title>
+<polygon fill="#50c878" stroke="black" points="375.09,-706.02 164.91,-706.02 164.91,-223.23 375.09,-223.23 375.09,-706.02"></polygon>
+<text text-anchor="middle" x="270" y="-692.12" font-family="Arial" font-size="11.00">Generic JSON Response</text>
+<text text-anchor="middle" x="270" y="-678.92" font-family="Arial" font-size="11.00">(handles all agent types)</text>
+<text text-anchor="middle" x="270" y="-652.72" font-family="Arial" font-size="11.00">{</text>
+<text text-anchor="middle" x="270" y="-639.52" font-family="Arial" font-size="11.00"> &#160;"responseType": "call_analysis",</text>
+<text text-anchor="middle" x="270" y="-626.32" font-family="Arial" font-size="11.00"> &#160;"batchId": "batch_20260217_001",</text>
+<text text-anchor="middle" x="270" y="-613.12" font-family="Arial" font-size="11.00"> &#160;"callsAnalyzed": 10,</text>
+<text text-anchor="middle" x="270" y="-599.92" font-family="Arial" font-size="11.00"> &#160;"analysisResults": [</text>
+<text text-anchor="middle" x="270" y="-586.72" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{</text>
+<text text-anchor="middle" x="270" y="-573.52" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"callId": "call_001",</text>
+<text text-anchor="middle" x="270" y="-560.32" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"conversationJson": {...},</text>
+<text text-anchor="middle" x="270" y="-547.12" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"apiCalls": [...],</text>
+<text text-anchor="middle" x="270" y="-533.92" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"output1_purpose": {</text>
+<text text-anchor="middle" x="270" y="-520.72" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"purpose": "appointment_booking",</text>
+<text text-anchor="middle" x="270" y="-507.52" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"confidence": "high",</text>
+<text text-anchor="middle" x="270" y="-494.32" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"summary": "..."</text>
+<text text-anchor="middle" x="270" y="-481.12" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;},</text>
+<text text-anchor="middle" x="270" y="-467.92" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"output2_failureAnalysis": {</text>
+<text text-anchor="middle" x="270" y="-454.72" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"operationalIssues": [...],</text>
+<text text-anchor="middle" x="270" y="-441.52" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"agenticIssues": [...],</text>
+<text text-anchor="middle" x="270" y="-428.32" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"hasAgenticIssues": true</text>
+<text text-anchor="middle" x="270" y="-415.12" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;},</text>
+<text text-anchor="middle" x="270" y="-401.92" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"output3_improvements": {</text>
+<text text-anchor="middle" x="270" y="-388.72" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"issue": "...",</text>
+<text text-anchor="middle" x="270" y="-375.52" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"fixes": [...],</text>
+<text text-anchor="middle" x="270" y="-362.32" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;"newWorkflow": [...]</text>
+<text text-anchor="middle" x="270" y="-349.12" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;}</text>
+<text text-anchor="middle" x="270" y="-335.92" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;},</text>
+<text text-anchor="middle" x="270" y="-322.72" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;...(9 more calls)</text>
+<text text-anchor="middle" x="270" y="-309.52" font-family="Arial" font-size="11.00"> &#160;]</text>
+<text text-anchor="middle" x="270" y="-296.32" font-family="Arial" font-size="11.00">}</text>
+<text text-anchor="middle" x="270" y="-270.12" font-family="Arial" font-size="11.00">✨ Future-proof:</text>
+<text text-anchor="middle" x="270" y="-256.92" font-family="Arial" font-size="11.00">• Extensible for new agent types</text>
+<text text-anchor="middle" x="270" y="-243.72" font-family="Arial" font-size="11.00">• Different responseType values</text>
+<text text-anchor="middle" x="270" y="-230.52" font-family="Arial" font-size="11.00">• Backward compatible</text>
+</g>
+<!-- FORMATTER&#45;&gt;OUTPUT -->
+<g id="edge15" class="edge">
+<title>FORMATTER-&gt;OUTPUT</title>
+<path fill="none" stroke="blue" stroke-width="2" d="M270,-776.5C270,-761.42 270,-741.52 270,-719.06"></path>
+<polygon fill="blue" stroke="blue" stroke-width="2" points="273.5,-719.36 270,-709.36 266.5,-719.36 273.5,-719.36"></polygon>
+<text text-anchor="middle" x="313.63" y="-749.82" font-family="Arial" font-size="10.00">Build generic JSON</text>
+</g>
+<!-- DASHBOARD -->
+<g id="node15" class="node">
+<title>DASHBOARD</title>
+<polygon fill="#d3d3d3" stroke="black" points="251.25,-132.51 122.75,-132.51 122.75,-19.11 251.25,-19.11 251.25,-132.51"></polygon>
+<text text-anchor="middle" x="187" y="-118.61" font-family="Arial" font-size="11.00">Dashboard Display</text>
+<text text-anchor="middle" x="187" y="-92.41" font-family="Arial" font-size="11.00">✓ Batch summary</text>
+<text text-anchor="middle" x="187" y="-79.21" font-family="Arial" font-size="11.00">✓ Per-call analysis</text>
+<text text-anchor="middle" x="187" y="-66.01" font-family="Arial" font-size="11.00">✓ Operational issues</text>
+<text text-anchor="middle" x="187" y="-52.81" font-family="Arial" font-size="11.00">✓ Agentic issues</text>
+<text text-anchor="middle" x="187" y="-39.61" font-family="Arial" font-size="11.00">✓ Recommended fixes</text>
+<text text-anchor="middle" x="187" y="-26.41" font-family="Arial" font-size="11.00">✓ Historical trends</text>
+</g>
+<!-- OUTPUT&#45;&gt;DASHBOARD -->
+<g id="edge16" class="edge">
+<title>OUTPUT-&gt;DASHBOARD</title>
+<path fill="none" stroke="green" stroke-width="2" d="M218.32,-222.77C212.29,-194.69 206.57,-168.02 201.71,-145.36"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="205.18,-144.85 199.66,-135.8 198.33,-146.31 205.18,-144.85"></polygon>
+<text text-anchor="middle" x="246.51" y="-196.22" font-family="Arial" font-size="10.00">Display results</text>
+</g>
+<!-- STORAGE -->
+<g id="node16" class="node">
+<title>STORAGE</title>
+<path fill="#a9a9a9" stroke="black" d="M404.61,-124.75C404.61,-130.75 374.31,-135.62 337,-135.62 299.69,-135.62 269.39,-130.75 269.39,-124.75 269.39,-124.75 269.39,-26.88 269.39,-26.88 269.39,-20.87 299.69,-16 337,-16 374.31,-16 404.61,-20.87 404.61,-26.88 404.61,-26.88 404.61,-124.75 404.61,-124.75"></path>
+<path fill="none" stroke="black" d="M404.61,-124.75C404.61,-118.75 374.31,-113.88 337,-113.88 299.69,-113.88 269.39,-118.75 269.39,-124.75"></path>
+<text text-anchor="middle" x="337" y="-105.41" font-family="Arial" font-size="11.00">Archive Results</text>
+<text text-anchor="middle" x="337" y="-79.21" font-family="Arial" font-size="11.00">✓ Store response JSON</text>
+<text text-anchor="middle" x="337" y="-66.01" font-family="Arial" font-size="11.00">✓ Track improvements</text>
+<text text-anchor="middle" x="337" y="-52.81" font-family="Arial" font-size="11.00">✓ Audit trail</text>
+<text text-anchor="middle" x="337" y="-39.61" font-family="Arial" font-size="11.00">✓ Analytics</text>
+</g>
+<!-- OUTPUT&#45;&gt;STORAGE -->
+<g id="edge17" class="edge">
+<title>OUTPUT-&gt;STORAGE</title>
+<path fill="none" stroke="green" stroke-width="2" d="M311.72,-222.77C316.34,-196.1 320.74,-170.7 324.53,-148.8"></path>
+<polygon fill="green" stroke="green" stroke-width="2" points="327.98,-149.41 326.24,-138.96 321.08,-148.22 327.98,-149.41"></polygon>
+<text text-anchor="middle" x="332.67" y="-196.22" font-family="Arial" font-size="10.00">Archive</text>
+</g>
+<!-- CALL_STRUCTURE -->
+<g id="node17" class="node">
+<title>CALL_STRUCTURE</title>
+<polygon fill="white" stroke="black" points="597.08,-3089.42 386.92,-3089.42 386.92,-2738.22 597.08,-2738.22 597.08,-3089.42"></polygon>
+<text text-anchor="middle" x="492" y="-3075.52" font-family="Arial" font-size="11.00">{</text>
+<text text-anchor="middle" x="492" y="-3062.32" font-family="Arial" font-size="11.00"> &#160;"callId": "call_001",</text>
+<text text-anchor="middle" x="492" y="-3049.12" font-family="Arial" font-size="11.00"> &#160;"timestamp": "2026-02-17T14:30:00Z",</text>
+<text text-anchor="middle" x="492" y="-3035.93" font-family="Arial" font-size="11.00"> &#160;"patientId": "pat_001",</text>
+<text text-anchor="middle" x="492" y="-3022.73" font-family="Arial" font-size="11.00"> &#160;"conversation": [</text>
+<text text-anchor="middle" x="492" y="-3009.53" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{"role": "patient", "content": "..."},</text>
+<text text-anchor="middle" x="492" y="-2996.33" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{"role": "agent", "content": "..."}</text>
+<text text-anchor="middle" x="492" y="-2983.13" font-family="Arial" font-size="11.00"> &#160;],</text>
+<text text-anchor="middle" x="492" y="-2969.93" font-family="Arial" font-size="11.00"> &#160;"customApiCalls": [</text>
+<text text-anchor="middle" x="492" y="-2956.73" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{</text>
+<text text-anchor="middle" x="492" y="-2943.53" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"name": "searchPatient",</text>
+<text text-anchor="middle" x="492" y="-2930.33" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"params": {...},</text>
+<text text-anchor="middle" x="492" y="-2917.13" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"response": {...}</text>
+<text text-anchor="middle" x="492" y="-2903.93" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;},</text>
+<text text-anchor="middle" x="492" y="-2890.73" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{</text>
+<text text-anchor="middle" x="492" y="-2877.53" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"name": "findSlots",</text>
+<text text-anchor="middle" x="492" y="-2864.33" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"params": {...},</text>
+<text text-anchor="middle" x="492" y="-2851.13" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"response": {...}</text>
+<text text-anchor="middle" x="492" y="-2837.93" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;},</text>
+<text text-anchor="middle" x="492" y="-2824.73" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;{</text>
+<text text-anchor="middle" x="492" y="-2811.53" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"name": "bookAppointment",</text>
+<text text-anchor="middle" x="492" y="-2798.33" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"status": "failed",</text>
+<text text-anchor="middle" x="492" y="-2785.13" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;&#160;&#160;"error": "No slots available"</text>
+<text text-anchor="middle" x="492" y="-2771.93" font-family="Arial" font-size="11.00"> &#160;&#160;&#160;}</text>
+<text text-anchor="middle" x="492" y="-2758.73" font-family="Arial" font-size="11.00"> &#160;]</text>
+<text text-anchor="middle" x="492" y="-2745.53" font-family="Arial" font-size="11.00">}</text>
+</g>
+<!-- M1 -->
+<g id="node18" class="node">
+<title>M1</title>
+<polygon fill="lightyellow" stroke="black" points="1388.61,-2931.82 1211.39,-2931.82 1211.39,-2895.82 1394.61,-2895.82 1394.61,-2925.82 1388.61,-2931.82"></polygon>
+<polyline fill="none" stroke="black" points="1388.61,-2931.82 1388.61,-2925.82"></polyline>
+<polyline fill="none" stroke="black" points="1394.61,-2925.82 1388.61,-2925.82"></polyline>
+<text text-anchor="middle" x="1303" y="-2910.52" font-family="Arial" font-size="11.00">⏱️ Processing: ~10-15 min/batch</text>
+</g>
+<!-- M2 -->
+<g id="node19" class="node">
+<title>M2</title>
+<polygon fill="lightyellow" stroke="black" points="1187.62,-2931.82 1036.38,-2931.82 1036.38,-2895.82 1193.62,-2895.82 1193.62,-2925.82 1187.62,-2931.82"></polygon>
+<polyline fill="none" stroke="black" points="1187.62,-2931.82 1187.62,-2925.82"></polyline>
+<polyline fill="none" stroke="black" points="1193.62,-2925.82 1187.62,-2925.82"></polyline>
+<text text-anchor="middle" x="1115" y="-2910.52" font-family="Arial" font-size="11.00">📊 Batch Size: 10 calls/batch</text>
+</g>
+<!-- M3 -->
+<g id="node20" class="node">
+<title>M3</title>
+<polygon fill="lightyellow" stroke="black" points="1012.64,-2931.82 847.36,-2931.82 847.36,-2895.82 1018.64,-2895.82 1018.64,-2925.82 1012.64,-2931.82"></polygon>
+<polyline fill="none" stroke="black" points="1012.64,-2931.82 1012.64,-2925.82"></polyline>
+<polyline fill="none" stroke="black" points="1018.64,-2925.82 1012.64,-2925.82"></polyline>
+<text text-anchor="middle" x="933" y="-2910.52" font-family="Arial" font-size="11.00">🔄 Frequency: Daily (23:59 PM)</text>
+</g>
+<!-- M4 -->
+<g id="node21" class="node">
+<title>M4</title>
+<polygon fill="lightyellow" stroke="black" points="823.3,-2931.82 620.7,-2931.82 620.7,-2895.82 829.3,-2895.82 829.3,-2925.82 823.3,-2931.82"></polygon>
+<polyline fill="none" stroke="black" points="823.3,-2931.82 823.3,-2925.82"></polyline>
+<polyline fill="none" stroke="black" points="829.3,-2925.82 823.3,-2925.82"></polyline>
+<text text-anchor="middle" x="725" y="-2910.52" font-family="Arial" font-size="11.00">💾 Retention: Results archived for audit</text>
+</g>
+</g>
+</g></svg>
